@@ -4,6 +4,16 @@
  if (!button || !menu) return;
  button.hidden = false;
  document.documentElement.classList.add('navigation-ready');
+ const markCurrent = () => {
+  menu.querySelectorAll('a').forEach((link) => {
+   const url = new URL(link.href, window.location.href);
+   const matches = url.origin === window.location.origin && url.pathname === window.location.pathname && url.search === window.location.search && url.hash === window.location.hash;
+   if (matches) link.setAttribute('aria-current', url.hash ? 'location' : 'page');
+   else link.removeAttribute('aria-current');
+  });
+ };
+ markCurrent();
+ window.addEventListener('hashchange', markCurrent);
  const close = () => button.setAttribute('aria-expanded', 'false');
  button.addEventListener('click', () => button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true')));
  menu.addEventListener('click', (event) => { if (event.target.closest('a')) close(); });
