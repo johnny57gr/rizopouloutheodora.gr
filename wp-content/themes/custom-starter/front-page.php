@@ -5,19 +5,15 @@
  *
  * @package Custom_Starter
  */
-if ( is_home() ) {
-	get_template_part( 'home' );
-	return;
-}
 get_header();
 ?>
-<main id="main-content" class="container" tabindex="-1">
+<main id="main-content" class="project-home" tabindex="-1">
 	<?php
-	while ( have_posts() ) {
-		the_post();
-		get_template_part( 'template-parts/content/content', 'page' );
-		if ( comments_open() || get_comments_number() ) {
-			comments_template();
+	if ( is_page() && post_password_required() ) {
+		echo get_the_password_form();
+	} else {
+		foreach ( array( 'hero', 'services', 'about', 'quote', 'office', 'journal', 'contact' ) as $section ) {
+			get_template_part( 'template-parts/home/' . $section );
 		}
 	}
 	?>
