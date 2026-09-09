@@ -1,0 +1,22 @@
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+wp-config.php
+*.pem
+*.key
+*.sql
+*.sql.gz
+
+# WordPress runtime data and third-party plugins.
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/plugins/
+*.log
+
+# Editor and OS artifacts.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
