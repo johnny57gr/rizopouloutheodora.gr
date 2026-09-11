@@ -52,3 +52,18 @@ h3{font-size:1.25rem;line-height:1.3;font-weight:500}
 .footer-socials > a, .footer-socials > span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 4px; background: var(--accent); color: #fff; }
 .footer-socials > a:hover { background: #665245; }
 @media(max-width:700px) { .footer-brand-link { align-items: flex-start; text-align: left; } }
+
+/* A single, centered invitation with two clear contact choices. */
+.contact-invitation { padding-block: clamp(3rem, 5vw, 5rem); text-align: center; }
+.contact-invitation .eyebrow { margin-bottom: 1rem; }
+.contact-invitation h2 { max-width: 48rem; margin: 0 auto 1.2rem; font-size: clamp(2rem, 3.2vw, 3rem); text-wrap: balance; }
+.contact-intro { max-width: 41rem; margin: 0 auto 1.8rem; color: var(--muted); white-space: pre-line; }
+.contact-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: .9rem; }
+.contact-actions .button { min-height: 50px; }
+.button-outline { background: transparent; color: var(--accent); }
+a.button-outline:hover { background: #e9dfd7; color: #554438; }
+@media(max-width:600px) {
+ .contact-actions { flex-direction: column; align-items: center; }
+ .contact-actions .button { width: min(100%, 25rem); padding-inline: 1rem; }
+ .contact-actions .button span { min-width: 0; }
+}

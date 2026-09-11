@@ -44,7 +44,8 @@ function custom_starter_home_schema() {
 		) ),
 		'contact' => array( 'Επικοινωνία και στοιχεία ιστοσελίδας', array(
 			'contact_title' => array( 'Τίτλος', 'textarea', "Είμαι εδώ για να συζητήσουμε\nό,τι σας απασχολεί." ),
-			'contact_text' => array( 'Κείμενο', 'textarea', 'Μπορείτε επίσης να επικοινωνήσετε μαζί μου μέσω email ή στα κοινωνικά μου δίκτυα.' ),
+			'contact_intro' => array( 'Κείμενο πρόσκλησης επικοινωνίας', 'textarea', 'Για πληροφορίες ή για να προγραμματίσουμε μια συνάντηση, μπορείτε να με καλέσετε ή να μου στείλετε ένα μήνυμα μέσω της φόρμας επικοινωνίας.' ),
+			'contact_page_url' => array( 'Σύνδεσμος σελίδας Επικοινωνία', 'url', '' ),
 			'phone' => array( 'Τηλέφωνο με κωδικό χώρας', 'text', '' ),
 			'email' => array( 'Email', 'email', '' ),
 			'address' => array( 'Διεύθυνση', 'text', 'Βενιζέλου 27, Βέροια 59132' ),
@@ -62,6 +63,7 @@ function custom_starter_register_home_fields() {
 		foreach ( $definition[1] as $name => $spec ) {
 			$field = array( 'key' => 'field_tr_' . $name, 'name' => 'tr_' . $name, 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
 			if ( 'phone' === $name ) { $field['instructions'] = 'Προσωρινά, όταν είναι κενό, εμφανίζεται το +30 697 000 0000 του mockup. Συμπληρώστε τον πραγματικό αριθμό πριν τη δημοσίευση.'; }
+			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Ο σύνδεσμος της σελίδας όπου θα βρίσκεται η φόρμα επικοινωνίας. Μέχρι να συμπληρωθεί χρησιμοποιείται προσωρινά το #.'; }
 			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να εμφανίζεται μόνο η ένδειξη Viber χωρίς σύνδεσμο.'; }
 			if ( 'textarea' === $spec[1] ) { $field['rows'] = 3; $field['new_lines'] = ''; }
 			if ( 'image' === $spec[1] ) { $field['return_format'] = 'id'; $field['preview_size'] = 'medium'; $field['mime_types'] = 'jpg,jpeg,png,webp'; $field['instructions'] = 'Χωρίς επιλογή εμφανίζεται η προσωρινή εικόνα του σχεδιασμού.'; }
