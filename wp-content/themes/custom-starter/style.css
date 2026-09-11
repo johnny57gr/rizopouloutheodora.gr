@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.3.0
+Version: 1.4.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1119,6 +1119,24 @@ a.button-outline:hover {
 .individual-location h3 { font: 400 1.5rem/1.3 Georgia, serif; margin-bottom: .75rem; }
 .individual-back { display: inline-block; margin-top: 1.5rem; }
 
+/* Services overview: alternating editorial rows. */
+.services-page { padding: 0; }
+.services-page-intro { background: var(--pale); padding: 1.25rem 0 3rem; }
+.services-page-intro header { text-align: center; max-width: 62rem; margin: 2rem auto 0; }
+.services-page-intro h1 { font-size: clamp(2rem, 3.3vw, 3rem); }
+.services-page-intro header > p:last-child { margin-bottom: 0; }
+.services-overview { padding-block: 1rem; }
+.services-overview-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2.5rem; padding-block: 1.5rem; }
+.services-overview-row + .services-overview-row { border-top: 1px solid var(--line); }
+.services-overview-row:nth-child(even) .services-overview-photo { order: 2; }
+.services-overview-photo { margin: 0; }
+.services-overview-photo img { display: block; width: 100%; height: 285px; object-fit: cover; }
+.services-overview-row:first-child img { object-position: center 60%; }
+.service-number { display: block; font-size: .85rem; color: var(--accent); margin-bottom: .5rem; }
+.services-overview-copy { padding: 1rem 0; }
+.services-overview-copy h2 { font-size: clamp(1.8rem, 2.7vw, 2.5rem); }
+.services-overview-copy .text-link { display: inline-block; margin-top: .5rem; border-bottom: 1px solid var(--accent); padding-bottom: .2rem; }
+
 /* Responsive: large-screen adjustments, then descending max-width breakpoints. */
 
 @media (min-width: 1600px) {
@@ -1216,6 +1234,11 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.services-page-intro { padding-bottom: 2rem; }
+	.services-page-intro .breadcrumbs { flex-wrap: wrap; }
+	.services-overview-row { grid-template-columns: 1fr; gap: .5rem; }
+	.services-overview-row:nth-child(even) .services-overview-photo { order: 0; }
+	.services-overview-photo img { height: 235px; }
 	.individual-hero, .individual-overview, .individual-meeting { grid-template-columns: 1fr; gap: 1.5rem; }
 	.individual-photo img { height: 290px; }
 	.individual-overview, .individual-meeting { padding-block: 2rem; }

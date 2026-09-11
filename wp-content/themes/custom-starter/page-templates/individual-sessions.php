@@ -14,7 +14,7 @@ get_header();
 		$contact_url = custom_starter_contact_page_url();
 		$contact_url = $contact_url ? $contact_url : home_url( '/#contact' );
 		$services_url = custom_starter_individual_value( 'services_url' );
-		$services_url = $services_url ? $services_url : home_url( '/#services' );
+		$services_url = $services_url ? $services_url : custom_starter_services_page_url();
 		?>
 		<div class="individual-hero-band">
 			<div class="section-wrap">
@@ -82,4 +82,3 @@ get_header();
 	<?php endif; ?>
 </main>
 <?php get_footer(); ?>
-

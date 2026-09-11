@@ -98,6 +98,7 @@ function custom_starter_project_menu() {
 	echo '<ul class="menu">';
 	foreach ( array( '' => 'Αρχική', 'services' => 'Υπηρεσίες', 'about' => 'Σχετικά με εμένα', 'journal' => 'Άρθρα', 'contact' => 'Επικοινωνία' ) as $anchor => $label ) {
 		$url = home_url( '/' ) . ( $anchor ? '#' . $anchor : '' );
+		if ( 'services' === $anchor ) { $url = custom_starter_services_page_url(); }
 		if ( 'contact' === $anchor && custom_starter_contact_page_url() ) { $url = custom_starter_contact_page_url(); }
 		printf( '<li><a href="%s">%s</a></li>', esc_url( $url ), esc_html( $label ) );
 }
