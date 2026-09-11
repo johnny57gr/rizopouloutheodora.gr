@@ -1,3 +1,7 @@
+## 1.5.0 — FAQ
+
+Ξεχωριστό πρότυπο Συχνές ερωτήσεις με 26 πεδία ACF Free, 8 προαιρετικές ερωτήσεις, φωτογραφία και πλαίσιο επικοινωνίας. Οδηγίες: [docs/faq-page.md](docs/faq-page.md).
+
 # rizopouloutheodora.gr
 
 Custom WordPress project for Θεοδώρα Ριζοπούλου.

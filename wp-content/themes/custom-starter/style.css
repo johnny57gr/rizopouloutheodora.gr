@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.4.0
+Version: 1.5.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1139,6 +1139,29 @@ a.button-outline:hover {
 
 /* Responsive: large-screen adjustments, then descending max-width breakpoints. */
 
+/* FAQ: native accordion and quiet editorial aside. */
+.faq-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; padding-block: 1rem 4rem; }
+.faq-item { border-bottom: 1px solid #ded5cd; }
+.faq-item:first-child { border-top: 1px solid #ded5cd; }
+.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.35rem .25rem; cursor: pointer; list-style: none; font-weight: 600; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:focus-visible { outline: 2px solid #806a59; outline-offset: 4px; }
+.faq-toggle { position: relative; flex: 0 0 1rem; width: 1rem; height: 1rem; color: #806a59; }
+.faq-toggle::before, .faq-toggle::after { content: ''; position: absolute; background: currentColor; }
+.faq-toggle::before { top: calc(50% - 1px); left: 0; width: 100%; height: 2px; }
+.faq-toggle::after { left: calc(50% - 1px); top: 0; width: 2px; height: 100%; }
+.faq-item[open] .faq-toggle::after { display: none; }
+.faq-item[open] summary { color: #806a59; }
+.faq-answer { padding: 0 2rem 1.25rem .25rem; line-height: 1.8; }
+.faq-answer p { margin: 0 0 .75rem; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-aside { background: #f4efeb; }
+.faq-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.faq-aside-copy { padding: 2rem; }
+.faq-aside-copy h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
+.faq-aside-contact { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #d9ccc1; }
+.faq-aside-contact p { margin-bottom: .5rem; }
+
 @media (min-width: 1600px) {
 	.hero-copy {
 		padding-left: 5rem;
@@ -1234,6 +1257,9 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.faq-layout { grid-template-columns: 1fr; padding-bottom: 2.5rem; }
+	.faq-aside-copy { padding: 1.5rem; }
+	.faq-photo { max-height: 300px; }
 	.services-page-intro { padding-bottom: 2rem; }
 	.services-page-intro .breadcrumbs { flex-wrap: wrap; }
 	.services-overview-row { grid-template-columns: 1fr; gap: .5rem; }

@@ -19,3 +19,14 @@
  menu.addEventListener('click', (event) => { if (event.target.closest('a')) close(); });
  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') { close(); button.focus(); } });
 })();
+
+// Native details work without JavaScript; enhance to keep one answer open.
+(() => {
+ const items = document.querySelectorAll('.faq-item');
+ items.forEach((item) => {
+  item.addEventListener('toggle', () => {
+   if (!item.open) return;
+   items.forEach((other) => { if (other !== item) other.open = false; });
+  });
+ });
+})();
