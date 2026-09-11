@@ -19,6 +19,8 @@ The cPanel repository is `/home/ri680427/repositories/rizopouloutheodora-site`, 
 
 ## Homepage editing (version 1.1.0)
 
+Version 1.1.3 fills any missing homepage article slots with illustrative cards (0 posts → 3 previews; 1 → 2; 2 → 1; 3 → none), and uses a bundled fallback image for real posts without a featured image. Only published, non-password-protected posts are queried.
+
 Version 1.1.2 brings the menu underline close to its label, adds the call-to-action telephone icon and footer logo/contact icons. Empty phone fields now explicitly fall back to the user-requested mockup number +30 697 000 0000; replace it before launch. Email and Viber remain plain labels until configured. Instagram and a Viber phone field are available in the homepage ACF contact group. Footer social icons are ordered Facebook, Instagram, LinkedIn; without URLs they are noninteractive placeholders. When the posts query is empty, three labeled illustrative article cards render without creating database posts or dead read-more links.
 
 Version 1.1.1 refines the header with a brown recoloring of the supplied brain/heart logo, the name and profession alongside it, centered desktop navigation and the phone button. The bundled logo has a white background. A logo selected in the Customizer still takes precedence; select the brown asset there if an older logo is set. The phone reads the homepage ACF field; until a valid number is saved the button leads to Contact. Assign native WordPress menus to include additional published pages such as FAQ. Compact navigation begins at 1200px, and the contact/phone button stays available on mobile.
