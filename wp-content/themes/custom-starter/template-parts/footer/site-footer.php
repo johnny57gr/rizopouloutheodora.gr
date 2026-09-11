@@ -35,7 +35,7 @@
 			<p class="footer-contact-row"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'viber' ) ); ?>
 			<?php if ( $viber_url ) : ?><a href="<?php echo esc_url( $viber_url, array( 'viber' ) ); ?>">Viber</a><?php else : ?><span>Viber</span><?php endif; ?></p>
 			<div class="social-links footer-socials">
-			<?php foreach ( array( 'facebook' => 'Facebook', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn' ) as $key => $label ) :
+			<?php foreach ( array( 'facebook' => 'Facebook', 'linkedin' => 'LinkedIn' ) as $key => $label ) :
 				$url = custom_starter_home_value( $key );
 				if ( $url ) : ?>
 				<a href="<?php echo esc_url( $url ); ?>" aria-label="<?php echo esc_attr( $label ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => $key ) ); ?></a>

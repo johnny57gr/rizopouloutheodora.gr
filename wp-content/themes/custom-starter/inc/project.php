@@ -49,7 +49,6 @@ function custom_starter_home_schema() {
 			'email' => array( 'Email', 'email', '' ),
 			'address' => array( 'Διεύθυνση', 'text', 'Βενιζέλου 27, Βέροια 59132' ),
 			'facebook' => array( 'Facebook URL', 'url', '' ),
-			'instagram' => array( 'Instagram URL', 'url', '' ),
 			'viber' => array( 'Viber κινητό με κωδικό χώρας', 'text', '' ),
 			'linkedin' => array( 'LinkedIn URL', 'url', '' ),
 			'whatsapp' => array( 'WhatsApp URL', 'url', '' ),
