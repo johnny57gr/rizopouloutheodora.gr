@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.2.0
+Version: 1.3.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1092,6 +1092,33 @@ a.button-outline:hover {
 	padding-inline-start: .75rem;
 }
 
+/* Individual Sessions: a layout exclusive to this service. */
+.individual-page { padding: 0; }
+.individual-hero-band { background: var(--pale); padding: 1.25rem 0 2.5rem; }
+.individual-hero-band .breadcrumbs { flex-wrap: wrap; margin-bottom: 2rem; }
+.individual-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 3rem; align-items: center; }
+.individual-hero h1 { font-size: clamp(2.4rem, 3.5vw, 3.5rem); margin-bottom: .35rem; }
+.individual-subtitle { font: 400 clamp(1.7rem, 2.5vw, 2.4rem)/1.25 Georgia, serif; color: var(--accent); margin-bottom: 1.5rem; }
+.individual-hero .button { margin-top: 1rem; }
+.individual-photo { margin: 0; }
+.individual-photo img { display: block; width: 100%; height: 380px; object-fit: cover; object-position: center 60%; }
+.individual-photo figcaption { text-align: right; font-size: .7rem; color: var(--muted); margin-top: .35rem; }
+.individual-overview, .individual-meeting { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 3rem; padding-block: 3rem; align-items: start; }
+.individual-page h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
+.individual-overview h2::after, .individual-meeting h2::after, .individual-topics h2::after { content: ''; display: block; width: 3rem; height: 2px; background: #aa9281; margin-top: 1rem; }
+.individual-overview p, .individual-meeting p { margin-bottom: 0; }
+.individual-topics { background: var(--pale); padding-block: 2.5rem; }
+.individual-topics h2 { text-align: center; }
+.individual-topics h2::after { margin-inline: auto; }
+.individual-topics ul { columns: 2; column-gap: 4rem; list-style: none; max-width: 60rem; margin: 2rem auto 0; padding: 0; }
+.individual-topics li { position: relative; padding: .4rem 0 .4rem 2rem; break-inside: avoid; }
+.individual-topics li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+.individual-meeting { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
+.individual-location { display: flex; gap: 1rem; padding: 2rem; background: var(--pale); border-radius: 4px; }
+.individual-location > .contact-icon { color: var(--accent); margin-top: .3rem; }
+.individual-location h3 { font: 400 1.5rem/1.3 Georgia, serif; margin-bottom: .75rem; }
+.individual-back { display: inline-block; margin-top: 1.5rem; }
+
 /* Responsive: large-screen adjustments, then descending max-width breakpoints. */
 
 @media (min-width: 1600px) {
@@ -1189,6 +1216,11 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.individual-hero, .individual-overview, .individual-meeting { grid-template-columns: 1fr; gap: 1.5rem; }
+	.individual-photo img { height: 290px; }
+	.individual-overview, .individual-meeting { padding-block: 2rem; }
+	.individual-topics ul { columns: 1; }
+	.individual-location { padding: 1.5rem; }
 	body {
 		font-size: 15px;
 	}
