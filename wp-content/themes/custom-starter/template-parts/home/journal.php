@@ -10,4 +10,22 @@ $articles = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 3, '
 <time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
 <h3><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a></h3>
 <a class="text-link" href="<?php the_permalink(); ?>">Διαβάστε περισσότερα →<span class="screen-reader-text"> — <?php echo esc_html( get_the_title() ); ?></span></a>
-</article><?php endwhile; ?></div><?php else : ?><p>Σύντομα θα βρείτε εδώ τα πρώτα άρθρα.</p><?php endif; wp_reset_postdata(); ?></section>
+</article><?php endwhile; ?></div><?php else : ?>
+<div class="journal-grid journal-placeholders">
+<?php
+$examples = array(
+	array( 'still-life-placeholder.png', 'Πώς να διαχειριστώ το άγχος στην καθημερινότητα;' ),
+	array( 'journal-stones.png', 'Η σημασία της αυτοφροντίδας' ),
+	array( 'journal-book.png', 'Επικοινωνία στη σχέση: μικρές αλλαγές, μεγάλη διαφορά' ),
+);
+foreach ( $examples as $example ) :
+?>
+<article>
+	<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $example[0] ) ); ?>" alt="" loading="lazy">
+	<span class="article-preview-label">Ενδεικτικό άρθρο</span>
+	<h3><?php echo esc_html( $example[1] ); ?></h3>
+	<span class="text-link">Σύντομα κοντά σας <span aria-hidden="true">→</span></span>
+</article>
+<?php endforeach; ?>
+</div>
+<?php endif; wp_reset_postdata(); ?></section>

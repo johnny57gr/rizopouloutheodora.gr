@@ -10,7 +10,7 @@
 .header-inner .menu { display: flex; justify-content: center; flex-wrap: nowrap; align-items: center; gap: clamp(.8rem, 1.35vw, 1.4rem); font-size: .83rem; }
 .header-inner .menu > li { position: relative; }
 .header-inner .menu > li > a { display: flex; align-items: center; min-height: 100px; padding: 0; white-space: nowrap; position: relative; text-decoration: none; }
-.header-inner .menu > li > a::after { content: ''; position: absolute; height: 2px; bottom: 0; inset-inline: 0; background: #aa9281; transform: scaleX(0); transition: transform .18s; }
+.header-inner .menu > li > a::after { content: ''; position: absolute; height: 2px; top: calc(50% + .85em + 5px); inset-inline: 0; background: #aa9281; transform: scaleX(0); transition: transform .18s; }
 .header-inner .menu > li > a:hover::after,
 .header-inner .menu > li > a:focus-visible::after,
 .header-inner .menu > li.current-menu-item > a::after,

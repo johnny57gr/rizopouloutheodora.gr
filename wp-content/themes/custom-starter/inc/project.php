@@ -49,6 +49,8 @@ function custom_starter_home_schema() {
 			'email' => array( 'Email', 'email', '' ),
 			'address' => array( 'Διεύθυνση', 'text', 'Βενιζέλου 27, Βέροια 59132' ),
 			'facebook' => array( 'Facebook URL', 'url', '' ),
+			'instagram' => array( 'Instagram URL', 'url', '' ),
+			'viber' => array( 'Viber κινητό με κωδικό χώρας', 'text', '' ),
 			'linkedin' => array( 'LinkedIn URL', 'url', '' ),
 			'whatsapp' => array( 'WhatsApp URL', 'url', '' ),
 			'blog_title' => array( 'Τίτλος άρθρων', 'text', 'Σκέψεις που μοιραζόμαστε' ),
@@ -60,6 +62,8 @@ function custom_starter_register_home_fields() {
 		$fields = array();
 		foreach ( $definition[1] as $name => $spec ) {
 			$field = array( 'key' => 'field_tr_' . $name, 'name' => 'tr_' . $name, 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
+			if ( 'phone' === $name ) { $field['instructions'] = 'Προσωρινά, όταν είναι κενό, εμφανίζεται το +30 697 000 0000 του mockup. Συμπληρώστε τον πραγματικό αριθμό πριν τη δημοσίευση.'; }
+			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να εμφανίζεται μόνο η ένδειξη Viber χωρίς σύνδεσμο.'; }
 			if ( 'textarea' === $spec[1] ) { $field['rows'] = 3; $field['new_lines'] = ''; }
 			if ( 'image' === $spec[1] ) { $field['return_format'] = 'id'; $field['preview_size'] = 'medium'; $field['mime_types'] = 'jpg,jpeg,png,webp'; $field['instructions'] = 'Χωρίς επιλογή εμφανίζεται η προσωρινή εικόνα του σχεδιασμού.'; }
 			$fields[] = $field;
@@ -72,8 +76,10 @@ function custom_starter_home_value( $name ) {
 	$id = (int) get_option( 'page_on_front' );
 	if ( $id && ! post_password_required( $id ) && function_exists( 'get_field' ) && metadata_exists( 'post', $id, 'tr_' . $name ) ) {
 		$value = get_field( 'tr_' . $name, $id );
-		return is_scalar( $value ) ? (string) $value : '';
+		$value = is_scalar( $value ) ? (string) $value : '';
+		return 'phone' === $name && '' === trim( $value ) ? '+30 697 000 0000' : $value;
 	}
+	if ( 'phone' === $name ) { return '+30 697 000 0000'; }
 	foreach ( custom_starter_home_schema() as $section ) { if ( isset( $section[1][ $name ] ) ) { return (string) $section[1][ $name ][2]; } }
 	return '';
 }
@@ -94,4 +100,3 @@ function custom_starter_project_menu() {
 	}
 	echo '</ul>';
 }
-
