@@ -19,6 +19,7 @@
 			</a>
 		</div>
 			<nav aria-label="<?php esc_attr_e( 'Footer Navigation', 'custom-starter' ); ?>">
+				<p class="footer-menu-title">Γρήγορη πλοήγηση</p>
 				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'menu_class' => 'menu', 'fallback_cb' => 'custom_starter_project_menu' ) ); ?>
 			</nav>
 		<address class="footer-contact">

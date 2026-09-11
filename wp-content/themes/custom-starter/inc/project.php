@@ -63,7 +63,7 @@ function custom_starter_register_home_fields() {
 		foreach ( $definition[1] as $name => $spec ) {
 			$field = array( 'key' => 'field_tr_' . $name, 'name' => 'tr_' . $name, 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
 			if ( 'phone' === $name ) { $field['instructions'] = 'Προσωρινά, όταν είναι κενό, εμφανίζεται το +30 697 000 0000 του mockup. Συμπληρώστε τον πραγματικό αριθμό πριν τη δημοσίευση.'; }
-			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Ο σύνδεσμος της σελίδας όπου θα βρίσκεται η φόρμα επικοινωνίας. Μέχρι να συμπληρωθεί χρησιμοποιείται προσωρινά το #.'; }
+			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Προαιρετική αντικατάσταση. Αν μείνει κενό, εντοπίζεται αυτόματα η δημοσιευμένη σελίδα με πρότυπο Επικοινωνία.'; }
 			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να εμφανίζεται μόνο η ένδειξη Viber χωρίς σύνδεσμο.'; }
 			if ( 'textarea' === $spec[1] ) { $field['rows'] = 3; $field['new_lines'] = ''; }
 			if ( 'image' === $spec[1] ) { $field['return_format'] = 'id'; $field['preview_size'] = 'medium'; $field['mime_types'] = 'jpg,jpeg,png,webp'; $field['instructions'] = 'Χωρίς επιλογή εμφανίζεται η προσωρινή εικόνα του σχεδιασμού.'; }
@@ -97,7 +97,9 @@ function custom_starter_phone_url() {
 function custom_starter_project_menu() {
 	echo '<ul class="menu">';
 	foreach ( array( '' => 'Αρχική', 'services' => 'Υπηρεσίες', 'about' => 'Σχετικά με εμένα', 'journal' => 'Άρθρα', 'contact' => 'Επικοινωνία' ) as $anchor => $label ) {
-		printf( '<li><a href="%s">%s</a></li>', esc_url( home_url( '/' ) . ( $anchor ? '#' . $anchor : '' ) ), esc_html( $label ) );
-	}
+		$url = home_url( '/' ) . ( $anchor ? '#' . $anchor : '' );
+		if ( 'contact' === $anchor && custom_starter_contact_page_url() ) { $url = custom_starter_contact_page_url(); }
+		printf( '<li><a href="%s">%s</a></li>', esc_url( $url ), esc_html( $label ) );
+}
 	echo '</ul>';
 }

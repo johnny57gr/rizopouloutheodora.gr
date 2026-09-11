@@ -19,6 +19,8 @@ The cPanel repository is `/home/ri680427/repositories/rizopouloutheodora-site`, 
 
 ## Homepage editing (version 1.1.0)
 
+**Current version 1.2.0:** Contact page template, ACF Free fields, Ninja Forms integration and Google Maps. See [contact setup](docs/contact-page.md). All theme CSS is now in style.css with consolidated media queries at the end; all custom JavaScript is in assets/js/main.js. Earlier asset paths below are historical. Footer navigation now uses two columns. Deployment removes the four explicitly retired CSS/JS files after copying successfully.
+
 Version 1.1.5 replaces the two-column contact strip with a centered invitation, phone CTA and outlined contact-form link. The new ACF contact intro is separate from the retired contact text, so existing saved text is not overwritten. Set Contact page URL when that page and form exist; the button temporarily uses # at the user's request. No form is rendered on the homepage.
 
 Version 1.1.3 fills any missing homepage article slots with illustrative cards (0 posts → 3 previews; 1 → 2; 2 → 1; 3 → none), and uses a bundled fallback image for real posts without a featured image. Only published, non-password-protected posts are queried.

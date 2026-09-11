@@ -1,6 +1,6 @@
 <?php
 /** Centered contact invitation; the form belongs on the contact page. @package Custom_Starter */
-$contact_url = custom_starter_home_value( 'contact_page_url' );
+$contact_url = custom_starter_contact_page_url();
 $contact_url = $contact_url ? $contact_url : '#';
 ?>
 <section id="contact" class="contact-section contact-invitation" aria-labelledby="contact-invitation-title">

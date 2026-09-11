@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - 'test -f /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/style.css && test -f wp-content/themes/custom-starter/functions.php && /bin/cp -R wp-content/themes/custom-starter/. /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/'
+    - 'test -f /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/style.css && test -f wp-content/themes/custom-starter/functions.php && /bin/cp -R wp-content/themes/custom-starter/. /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/ && /bin/rm -f /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/assets/css/base.css /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/assets/css/project.css /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/assets/css/header.css /home/ri680427/public_html/wp-content/themes/rizopouloutheodora.gr/assets/js/navigation.js'
