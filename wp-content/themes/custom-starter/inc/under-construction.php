@@ -13,7 +13,7 @@ function custom_starter_construction_customize( $wp_customize ) {
 		'custom_starter_construction',
 		array(
 			'title'       => __( 'Υπό κατασκευή', 'custom-starter' ),
-			'description' => __( 'Όταν είναι ενεργό, οι επισκέπτες βλέπουν το παρακάτω μήνυμα. Οι συνδεδεμένοι διαχειριστές βλέπουν κανονικά το site.', 'custom-starter' ),
+			'description' => __( 'Όταν είναι ενεργό, οι επισκέπτες βλέπουν το παρακάτω μήνυμα. Οι συνδεδεμένοι διαχειριστές βλέπουν κανονικά το site. Για σύνδεσμο επισκέπτη: Εμφάνιση → Ιδιωτική προεπισκόπηση.', 'custom-starter' ),
 			'capability'  => 'manage_options',
 		)
 	);
@@ -66,6 +66,10 @@ function custom_starter_construction_sanitize_enabled( $value ) {
 /** Replace public frontend responses while allowing administrators to work. */
 function custom_starter_construction_redirect() {
 	if ( ! get_theme_mod( 'custom_starter_construction_enabled', false ) || current_user_can( 'manage_options' ) || is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		return;
+	}
+
+	if ( isset( $_COOKIE['custom_starter_preview'] ) && custom_starter_preview_cookie_valid( $_COOKIE['custom_starter_preview'] ) ) {
 		return;
 	}
 
