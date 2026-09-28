@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.5.1
+Version: 1.5.2
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -767,9 +767,9 @@ a.button-outline:hover {
 	margin: auto;
 	display: flex;
 	align-items: center;
-	gap: clamp(1rem, 2vw, 2rem);
+	gap: clamp(.75rem, 1.2vw, 1.5rem);
 	justify-content: space-between;
-	min-height: 100px;
+	min-height: 112px;
 	flex-wrap: nowrap;
 }
 
@@ -787,21 +787,21 @@ a.button-outline:hover {
 
 .header-logo {
 	display: block;
-	width: 96px;
-	height: 65px;
+	width: 112px;
+	height: 76px;
 	object-fit: contain;
 	flex-shrink: 0;
 }
 
 .header-brand .brand-name {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1.05rem;
+	font-size: 1.18rem;
 	font-weight: 500;
 	white-space: nowrap;
 }
 
 .header-brand .brand-name small {
-	font-size: .7rem;
+	font-size: .78rem;
 	letter-spacing: 0;
 	color: var(--muted);
 }
@@ -829,7 +829,7 @@ a.button-outline:hover {
 .header-inner .menu > li > a {
 	display: flex;
 	align-items: center;
-	min-height: 100px;
+	min-height: 112px;
 	padding: 0;
 	white-space: nowrap;
 	position: relative;
@@ -1194,7 +1194,7 @@ a.button-outline:hover {
 @media (max-width: 1200px) {
 	.header-inner {
 		width: calc(100% - 2rem);
-		min-height: 86px;
+		min-height: 96px;
 		flex-wrap: wrap;
 		gap: .75rem;
 		padding-block: .6rem;
@@ -1425,8 +1425,8 @@ a.button-outline:hover {
 
 @media (max-width: 540px) {
 	.header-logo {
-		width: 64px;
-		height: 46px;
+		width: 72px;
+		height: 52px;
 	}
 
 	.header-brand {
@@ -1434,12 +1434,12 @@ a.button-outline:hover {
 	}
 
 	.header-brand .brand-name {
-		font-size: .87rem;
+		font-size: .95rem;
 		white-space: normal;
 	}
 
 	.header-brand .brand-name small {
-		font-size: .59rem;
+		font-size: .65rem;
 	}
 
 	.header-inner .header-phone {
