@@ -28,7 +28,7 @@ foreach ( $groups as $group ) {
 		check_services( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url', 'wysiwyg' ), true ), 'Non-Free field.' );
 	}
 }
-check_services( 20 === count( $keys ), 'Expected 20 biography fields.' );
+check_services( 21 === count( $keys ), 'Expected 21 biography fields.' );
 $saved['tr_biography_intro'] = '';
 check_services( '' === custom_starter_biography_value( 'intro' ), 'Keep intentionally hidden questions.' );
 $saved['tr_biography_education_text'] = array( 'unexpected' );

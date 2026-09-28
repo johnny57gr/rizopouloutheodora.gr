@@ -52,6 +52,19 @@ get_header();
 				</div>
 			</div>
 		</section>
+		<figure class="section-wrap biography-office">
+			<?php
+			$office_image_id = absint( custom_starter_biography_value( 'office_image' ) );
+			if ( $office_image_id && wp_attachment_is_image( $office_image_id ) ) {
+				echo wp_get_attachment_image( $office_image_id, 'full', false, array( 'class' => 'biography-office-photo', 'loading' => 'lazy', 'sizes' => '(max-width: 700px) calc(100vw - 32px), 1200px' ) );
+			} else {
+				?>
+				<img class="biography-office-photo" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/interior-placeholder.png' ) ); ?>" alt="" loading="lazy">
+				<figcaption><?php esc_html_e( 'Ενδεικτική εικόνα — η φωτογραφία του γραφείου θα προστεθεί σύντομα.', 'custom-starter' ); ?></figcaption>
+				<?php
+			}
+			?>
+		</figure>
 		<div class="section-wrap biography-background">
 			<?php foreach ( array( 'education', 'experience' ) as $section ) : ?>
 				<section class="biography-detail-row">
