@@ -53,18 +53,18 @@ get_header();
 			</div>
 		</section>
 		<div class="section-wrap biography-background">
-			<div class="biography-columns">
-				<?php foreach ( array( 'education' => 'research', 'experience' => 'volunteering' ) as $section => $additional ) : ?>
-					<section class="biography-column">
-						<h2><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></h2>
-						<div class="biography-rich-text"><?php echo wp_kses_post( wpautop( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
-						<div class="biography-additional">
-							<h3><?php echo esc_html( custom_starter_biography_value( $additional . '_title' ) ); ?></h3>
-							<?php echo wpautop( esc_html( custom_starter_biography_value( $additional . '_text' ) ) ); ?>
-						</div>
-					</section>
-				<?php endforeach; ?>
-			</div>
+			<?php foreach ( array( 'education', 'experience' ) as $section ) : ?>
+				<section class="biography-detail-row">
+					<h2><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></h2>
+					<div class="biography-rich-text"><?php echo wp_kses_post( wpautop( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
+				</section>
+			<?php endforeach; ?>
+			<?php foreach ( array( 'research', 'volunteering' ) as $section ) : ?>
+				<section class="biography-detail-row biography-detail-short">
+					<h2><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></h2>
+					<div><?php echo wpautop( esc_html( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
+				</section>
+			<?php endforeach; ?>
 		</div>
 		<section class="contact-section contact-invitation services-page-cta">
 			<div class="section-wrap">

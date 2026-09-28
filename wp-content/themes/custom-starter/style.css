@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.6.1
+Version: 1.6.2
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1179,17 +1179,23 @@ a.button-outline:hover {
 .biography-approach-copy { padding-left: 2.5rem; border-left: 1px solid #d9ccc1; }
 .biography-values { color: #806a59; margin-bottom: 0; }
 .biography-background { padding-block: 2.5rem; }
-.biography-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; }
-.biography-column { display: flex; flex-direction: column; min-width: 0; padding: clamp(1.5rem, 3vw, 2.5rem); background: #f7f4f1; border: 1px solid #e7dfd8; border-radius: 6px; }
-.biography-rich-text { flex: 1; }
-.biography-column h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #c9b6a7; }
-.biography-rich-text h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4; margin: 1.25rem 0 .35rem; }
+.biography-detail-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2.5rem; padding-block: 2rem; }
+.biography-detail-row + .biography-detail-row { border-top: 1px solid #e0d9d3; }
+.biography-detail-row h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 0; }
+.biography-detail-row > div { padding-left: 2.5rem; border-left: 1px solid #e0d9d3; }
+.biography-rich-text h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4; margin: 1.5rem 0 .35rem; }
 .biography-rich-text h3:first-child { margin-top: 0; }
-.biography-rich-text p + h3 { border-top: 1px solid #e0d9d3; padding-top: 1.25rem; }
 .biography-rich-text p { margin-bottom: .85rem; }
-.biography-additional { margin-top: 2rem; border-top: 1px solid #e0d9d3; padding-top: 1.75rem; }
-.biography-additional h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 1.3rem; line-height: 1.4; margin-bottom: .65rem; }
-.biography-additional p:last-child { margin-bottom: 0; }
+.biography-detail-row p:last-child { margin-bottom: 0; }
+.biography-detail-short h2 { font-size: 1.45rem; }
+
+/* Animate only upon entry; content stays visible without JavaScript. */
+@keyframes section-arrive {
+	from { opacity: .35; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+.section-arriving { animation: section-arrive .55s ease-out both; }
+.section-arriving:focus-within { animation: none; }
 
 @media (min-width: 1600px) {
 	.hero-copy {
@@ -1286,7 +1292,9 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
-	.biography-intro, .biography-approach-grid, .biography-columns { grid-template-columns: 1fr; gap: 1.5rem; }
+	.biography-intro, .biography-approach-grid, .biography-detail-row { grid-template-columns: 1fr; gap: 1.5rem; }
+	.biography-detail-row > div { padding-left: 0; border-left: 0; }
+	.biography-detail-row { padding-block: 1.5rem; }
 	.biography-portrait { width: min(100%, 280px); margin-inline: auto; }
 	.biography-intro { padding-block: 1rem 2rem; }
 	.biography-approach-copy { padding-left: 0; border-left: 0; }
@@ -1497,6 +1505,7 @@ a.button-outline:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+	.section-arriving { animation: none; }
 	.button {
 		transition: none;
 	}

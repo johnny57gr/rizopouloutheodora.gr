@@ -30,3 +30,28 @@
   });
  });
 })();
+
+// One gentle entrance per section. No hidden state or scroll listeners.
+(() => {
+ const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+ if (preference.matches || !('IntersectionObserver' in window)) return;
+ const sections = document.querySelectorAll('main > section, .biography-detail-row, .services-overview-row, .contact-map');
+ const observer = new IntersectionObserver((entries) => {
+  entries.forEach(({ target, isIntersecting }) => {
+   if (!isIntersecting) return;
+   observer.unobserve(target);
+   if (preference.matches || target.contains(document.activeElement)) return;
+   target.classList.add('section-arriving');
+   target.addEventListener('animationend', () => target.classList.remove('section-arriving'), { once: true });
+  });
+ }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
+ sections.forEach((section) => {
+  // Leave the initial viewport and restored scroll position immediately readable.
+  if (section.getBoundingClientRect().top >= window.innerHeight) observer.observe(section);
+ });
+ preference.addEventListener('change', () => {
+  if (!preference.matches) return;
+  observer.disconnect();
+  sections.forEach((section) => section.classList.remove('section-arriving'));
+ });
+})();
