@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.5.2
+Version: 1.6.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1162,6 +1162,34 @@ a.button-outline:hover {
 .faq-aside-contact { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #d9ccc1; }
 .faq-aside-contact p { margin-bottom: .5rem; }
 
+/* Biography: approved portrait-left layout, with paired editorial columns. */
+.biography-page > .section-wrap { padding-top: 1.5rem; }
+.biography-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding-block: 1.5rem 3rem; }
+.biography-portrait { min-width: 0; }
+.biography-photo, .biography-placeholder { width: 100%; aspect-ratio: 3 / 4; }
+.biography-photo { display: block; object-fit: cover; object-position: center top; }
+.biography-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem; background: #ebe6e1; color: #806a59; text-align: center; }
+.biography-placeholder p { max-width: 13rem; margin: 0; }
+.biography-intro h1 { font-size: clamp(2rem, 3.7vw, 3.6rem); margin-bottom: .5rem; }
+.biography-profession { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.15rem, 2vw, 1.65rem); margin-bottom: 1.5rem; }
+.biography-copy { line-height: 1.8; }
+.biography-approach { padding-block: 2.5rem; background: #f4efeb; }
+.biography-approach-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2.5rem; align-items: center; }
+.biography-approach h2 { margin-bottom: 0; }
+.biography-approach-copy { padding-left: 2.5rem; border-left: 1px solid #d9ccc1; }
+.biography-values { color: #806a59; margin-bottom: 0; }
+.biography-background { padding-block: 2.5rem; }
+.biography-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; }
+.biography-column + .biography-column { padding-left: 2.5rem; border-left: 1px solid #e0d9d3; }
+.biography-column h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+.biography-rich-text h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4; margin: 1.25rem 0 .35rem; }
+.biography-rich-text h3:first-child { margin-top: 0; }
+.biography-rich-text p + h3 { border-top: 1px solid #e0d9d3; padding-top: 1.25rem; }
+.biography-rich-text p { margin-bottom: .85rem; }
+.biography-additional { margin-top: 2rem; border-top: 1px solid #e0d9d3; padding-top: 1.75rem; }
+.biography-additional h2 { font-size: 1.45rem; }
+.biography-additional p:last-child { margin-bottom: 0; }
+
 @media (min-width: 1600px) {
 	.hero-copy {
 		padding-left: 5rem;
@@ -1257,6 +1285,12 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.biography-intro, .biography-approach-grid, .biography-columns { grid-template-columns: 1fr; gap: 1.5rem; }
+	.biography-portrait { width: min(100%, 280px); margin-inline: auto; }
+	.biography-intro { padding-block: 1rem 2rem; }
+	.biography-approach-copy, .biography-column + .biography-column { padding-left: 0; border-left: 0; }
+	.biography-column + .biography-column { border-top: 1px solid #e0d9d3; padding-top: 1.5rem; }
+	.biography-approach, .biography-background { padding-block: 2rem; }
 	.faq-layout { grid-template-columns: 1fr; padding-bottom: 2.5rem; }
 	.faq-aside-copy { padding: 1.5rem; }
 	.faq-photo { max-height: 300px; }
