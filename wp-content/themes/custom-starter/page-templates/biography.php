@@ -38,17 +38,16 @@ get_header();
 					<p class="eyebrow"><?php echo esc_html( custom_starter_biography_value( 'eyebrow' ) ); ?></p>
 					<h1><?php echo esc_html( custom_starter_biography_value( 'title' ) ); ?></h1>
 					<p class="biography-profession"><?php echo esc_html( custom_starter_biography_value( 'profession' ) ); ?></p>
-					<div class="biography-copy"><?php echo wpautop( esc_html( custom_starter_biography_value( 'intro' ) ) ); ?></div>
 					<a class="text-link" href="<?php echo esc_url( $contact_url ); ?>"><?php echo esc_html( custom_starter_biography_value( 'intro_button' ) ); ?> <span aria-hidden="true">→</span></a>
 				</header>
 			</div>
 		</div>
 		<section class="biography-approach">
 			<div class="section-wrap biography-approach-grid">
-				<div><p class="eyebrow"><?php echo esc_html( custom_starter_biography_value( 'approach_eyebrow' ) ); ?></p><h2><?php echo esc_html( custom_starter_biography_value( 'approach_title' ) ); ?></h2></div>
+				<div><h2><?php echo esc_html( custom_starter_biography_value( 'approach_title' ) ); ?></h2></div>
 				<div class="biography-approach-copy">
 					<?php echo wpautop( esc_html( custom_starter_biography_value( 'approach_text' ) ) ); ?>
-					<p class="biography-values"><?php echo esc_html( custom_starter_biography_value( 'values' ) ); ?></p>
+					<div class="biography-values"><?php echo wp_kses_post( custom_starter_biography_value( 'values' ) ) ; ?></div>
 				</div>
 			</div>
 		</section>
@@ -66,23 +65,16 @@ get_header();
 			?>
 		</figure>
 		<div class="section-wrap biography-background">
-			<?php foreach ( array( 'education', 'experience' ) as $section ) : ?>
+			<?php foreach ( array( 'education', 'training', 'experience', 'volunteering' ) as $section ) : ?>
 				<section class="biography-detail-row">
 					<h2><?php get_template_part( 'template-parts/components/biography-icon', null, array( 'icon' => $section ) ); ?><span><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></span></h2>
 					<div class="biography-rich-text"><?php echo wp_kses_post( wpautop( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
 				</section>
 			<?php endforeach; ?>
-			<?php foreach ( array( 'research', 'volunteering' ) as $section ) : ?>
-				<section class="biography-detail-row biography-detail-short">
-					<h2><?php get_template_part( 'template-parts/components/biography-icon', null, array( 'icon' => $section ) ); ?><span><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></span></h2>
-					<div><?php echo wpautop( esc_html( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
-				</section>
-			<?php endforeach; ?>
+
 		</div>
 		<section class="contact-section contact-invitation services-page-cta">
 			<div class="section-wrap">
-				<h2><?php echo esc_html( custom_starter_biography_value( 'cta_title' ) ); ?></h2>
-				<p class="contact-intro"><?php echo esc_html( custom_starter_biography_value( 'cta_text' ) ); ?></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>
 						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?><?php esc_html_e( 'Καλέστε με τώρα', 'custom-starter' ); ?></a>

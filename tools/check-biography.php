@@ -28,10 +28,10 @@ foreach ( $groups as $group ) {
 		check_services( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url', 'wysiwyg' ), true ), 'Non-Free field.' );
 	}
 }
-check_services( 21 === count( $keys ), 'Expected 21 biography fields.' );
-$saved['tr_biography_intro'] = '';
-check_services( '' === custom_starter_biography_value( 'intro' ), 'Keep intentionally hidden questions.' );
-$saved['tr_biography_education_text'] = array( 'unexpected' );
+check_services( 17 === count( $keys ), 'Expected 17 biography fields.' );
+$saved['tr_biography_exact_approach_text'] = '';
+check_services( '' === custom_starter_biography_value( 'approach_text' ), 'Keep intentionally hidden questions.' );
+$saved['tr_biography_exact_education_text'] = array( 'unexpected' );
 check_services( '' === custom_starter_biography_value( 'education_text' ), 'Reject non-scalar data.' );
 check_services( '' !== custom_starter_biography_value( 'title' ), 'Defaults without saved metadata.' );
 $GLOBALS['override'] = '';

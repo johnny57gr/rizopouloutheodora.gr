@@ -5,7 +5,7 @@ $icon = isset( $args['icon'] ) ? $args['icon'] : '';
 ?>
 <span class="biography-icon" aria-hidden="true">
 	<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-		<?php if ( 'education' === $icon ) : ?>
+		<?php if ( 'education' === $icon || 'training' === $icon ) : ?>
 			<path d="m2 8 10-5 10 5-10 5-10-5Z M6 10v6c4 3 8 3 12 0v-6 M22 8v8"/>
 		<?php elseif ( 'experience' === $icon ) : ?>
 			<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3 M3 12c5 3 13 3 18 0 M12 12v4"/>
