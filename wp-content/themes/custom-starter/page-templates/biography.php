@@ -68,7 +68,7 @@ get_header();
 			<?php foreach ( array( 'education', 'training', 'experience', 'volunteering' ) as $section ) : ?>
 				<section class="biography-detail-row">
 					<h2><?php get_template_part( 'template-parts/components/biography-icon', null, array( 'icon' => $section ) ); ?><span><?php echo esc_html( custom_starter_biography_value( $section . '_title' ) ); ?></span></h2>
-					<div class="biography-rich-text"><?php echo wp_kses_post( wpautop( custom_starter_biography_value( $section . '_text' ) ) ); ?></div>
+					<div class="biography-rich-text"><?php echo wp_kses_post( custom_starter_biography_group_content( wpautop( custom_starter_biography_value( $section . '_text' ) ) ) ); ?></div>
 				</section>
 			<?php endforeach; ?>
 

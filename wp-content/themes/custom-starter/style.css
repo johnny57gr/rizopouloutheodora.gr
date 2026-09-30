@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.1
+Version: 1.8.2
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1157,8 +1157,10 @@ a.button-outline:hover {
 
 /* Biography: approved portrait-left layout, with paired editorial columns. */
 .biography-page > .section-wrap { padding-top: 1.5rem; }
-.biography-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding-block: 1.5rem 3rem; }
-.biography-portrait { min-width: 0; }
+.biography-intro { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; margin-block: 1.5rem 3rem; padding: clamp(1.5rem, 3vw, 3rem); background: #f7f3ef; border: 1px solid #e7ded5; border-radius: 8px; }
+.biography-portrait { min-width: 0; max-width: 310px; width: 100%; }
+.biography-intro-copy { border-left: 2px solid #c9b6a7; padding-left: clamp(1.25rem, 3vw, 2.5rem); }
+.biography-intro-copy .text-link { display: inline-block; padding-bottom: .35rem; border-bottom: 1px solid currentColor; }
 .biography-photo, .biography-placeholder { width: 100%; aspect-ratio: 3 / 4; }
 .biography-photo { display: block; object-fit: cover; object-position: center top; }
 .biography-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem; background: #ebe6e1; color: #806a59; text-align: center; }
@@ -1170,7 +1172,17 @@ a.button-outline:hover {
 .biography-approach-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2.5rem; align-items: center; }
 .biography-approach h2 { margin-bottom: 0; }
 .biography-approach-copy { padding-left: 2.5rem; border-left: 1px solid #d9ccc1; }
-.biography-values { color: #806a59; margin-bottom: 0; }
+.biography-values { margin-top: 1.5rem; margin-bottom: 0; }
+.biography-values > p { font-weight: 600; }
+.biography-values ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .65rem; }
+.biography-values li { padding: .9rem 1.15rem; border-left: 3px solid #b99d86; border-radius: 0 5px 5px 0; background: #fffaf6; color: var(--ink); }
+.biography-entry { padding-block: 1.15rem; }
+.biography-entry:first-child { padding-top: 0; }
+.biography-entry:last-child { padding-bottom: 0; }
+.biography-entry + .biography-entry { border-top: 1px solid #d9cabc; }
+.biography-entry .biography-entry-heading { margin-bottom: .45rem; }
+.biography-entry > p:last-child { margin-bottom: 0; }
+.biography-entry-heading strong { color: #665245; font-weight: 600; }
 .biography-office { margin: 2.5rem auto 0; }
 .biography-office-photo { display: block; width: 100%; height: clamp(240px, 30vw, 400px); object-fit: cover; object-position: center; border-radius: 6px; }
 .biography-office figcaption { margin-top: .6rem; font-size: .8rem; color: var(--muted); }
@@ -1309,7 +1321,8 @@ a.button-outline:hover {
 	.biography-detail-row > div { padding-left: 0; border-left: 0; }
 	.biography-detail-row { padding-block: 1.5rem; }
 	.biography-portrait { width: min(100%, 280px); margin-inline: auto; }
-	.biography-intro { padding-block: 1rem 2rem; }
+	.biography-intro { padding: 1.25rem; margin-block: 1rem 2rem; }
+	.biography-intro-copy { border-left: 0; padding-left: 0; }
 	.biography-approach-copy { padding-left: 0; border-left: 0; }
 	.biography-approach, .biography-background { padding-block: 2rem; }
 	.faq-layout { grid-template-columns: 1fr; padding-bottom: 2.5rem; }

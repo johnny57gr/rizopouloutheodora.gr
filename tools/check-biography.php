@@ -41,3 +41,14 @@ check_services( 'https://example.test/services/' === custom_starter_biography_pa
 $GLOBALS['override'] = 'https://example.test/custom-bio/';
 check_services( $GLOBALS['override'] === custom_starter_biography_page_url(), 'Keep explicit homepage link.' );
 echo "PASS: biography fields, template scope, saved blanks, scalar values and page discovery.\n";
+
+function wp_strip_all_tags( $value ) { return strip_tags( $value ); }
+$schema = custom_starter_biography_schema();
+foreach ( array( 'education' => 3, 'training' => 2, 'experience' => 4, 'volunteering' => 2 ) as $section => $count ) {
+	$raw = $schema[ $section ][1][ $section . '_text' ][2];
+	$formatted = custom_starter_biography_group_content( $raw );
+	check_services( strip_tags( $raw ) === strip_tags( $formatted ), 'Grouping must preserve every character.' );
+	check_services( $count === substr_count( $formatted, 'class="biography-entry"' ), 'Wrong entry grouping: ' . $section );
+	check_services( substr_count( $formatted, '<div' ) === substr_count( $formatted, '</div>' ), 'Unbalanced groups.' );
+}
+echo "PASS: entry grouping and verbatim text preservation.\n";

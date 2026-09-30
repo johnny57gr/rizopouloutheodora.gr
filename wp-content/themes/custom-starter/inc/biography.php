@@ -112,3 +112,41 @@ function custom_starter_biography_page_url() {
 	}
 	return custom_starter_service_template_url( 'page-templates/biography.php' );
 }
+
+/** Group existing editor paragraphs without changing their words or stored values. */
+function custom_starter_biography_group_content( $content ) {
+	$starts = array(
+		'Πτυχίο Ψυχολογίας', 'Πτυχιακή Εργασία:', 'Επιστημονική Δημοσίευση / Συνέδρια:',
+		'Γνωστική Συμπεριφορική Ψυχοθεραπεία', 'Θεραπεία Αποδοχής και Δέσμευσης',
+		'Κινητή Μονάδα Ψυχικής Υγείας Ενηλίκων Ημαθίας', 'Ψυχολογικό Κέντρο',
+		'Κέντρο Ειδικών Θεραπειών:', 'ΚΑΠΗ Δήμου Βέροιας:', 'ΚΕΘΕΑ / ΚΕΘΕΑ ΙΘΑΚΗ:', '«Πρωτοβουλία για το Παιδί»:',
+	);
+	$open = false;
+	$html = preg_replace_callback(
+		'/<(p|h[2-6])\b[^>]*>(.*?)<\/\1>/su',
+		function ( $match ) use ( $starts, &$open ) {
+			$plain = trim( html_entity_decode( wp_strip_all_tags( $match[2] ), ENT_QUOTES, 'UTF-8' ) );
+			$is_start = false;
+			foreach ( $starts as $start ) {
+				if ( 0 === strpos( $plain, $start ) ) {
+					$is_start = true;
+					break;
+				}
+			}
+			if ( ! $is_start ) {
+				return $match[0];
+			}
+			$prefix = $open ? '</div>' : '';
+			$open = true;
+			// Bold the label only when the editor supplied plain text; retain rich markup.
+			$inner = $match[2];
+			if ( false === strpos( $inner, '<' ) ) {
+				$colon = strpos( $inner, ':' );
+				$inner = false === $colon ? '<strong>' . $inner . '</strong>' : '<strong>' . substr( $inner, 0, $colon + 1 ) . '</strong>' . substr( $inner, $colon + 1 );
+			}
+			return $prefix . '<div class="biography-entry"><p class="biography-entry-heading">' . $inner . '</p>';
+		},
+		$content
+	);
+	return $html . ( $open ? '</div>' : '' );
+}
