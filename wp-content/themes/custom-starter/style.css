@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.7.0
+Version: 1.7.1
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1108,8 +1108,8 @@ a.button-outline:hover {
 .individual-overview h2::after, .individual-meeting h2::after, .individual-topics h2::after { content: ''; display: block; width: 3rem; height: 2px; background: #aa9281; margin-top: 1rem; }
 .individual-overview p, .individual-meeting p { margin-bottom: 0; }
 .individual-topics { background: var(--pale); padding-block: 2.5rem; }
-.individual-topics h2 { text-align: center; }
-.individual-topics h2::after { margin-inline: auto; }
+.individual-topics h2 { width: fit-content; max-width: 100%; margin-inline: auto; text-align: start; }
+.individual-topics h2::after { margin-inline: 0; }
 .individual-topics ul { columns: 2; column-gap: 4rem; list-style: none; max-width: 60rem; margin: 2rem auto 0; padding: 0; }
 .individual-topics li { position: relative; padding: .4rem 0 .4rem 2rem; break-inside: avoid; }
 .individual-topics li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
