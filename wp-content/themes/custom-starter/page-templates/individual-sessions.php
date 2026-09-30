@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Ατομικές Συνεδρίες
+ * Template Name: Ατομική Ψυχοθεραπεία Ενηλίκων
  * Template Post Type: page
  *
  * @package Custom_Starter
@@ -50,6 +50,18 @@ get_header();
 		<section class="individual-overview section-wrap">
 			<h2><?php custom_starter_individual_text( 'overview_title' ); ?></h2>
 			<p class="copy"><?php custom_starter_individual_text( 'overview_text' ); ?></p>
+		</section>
+		<section class="individual-approach section-wrap">
+			<header><h2><?php custom_starter_individual_text( 'approach_title' ); ?></h2><p class="copy"><?php custom_starter_individual_text( 'approach_intro' ); ?></p></header>
+			<div class="individual-approach-grid">
+				<?php foreach ( array( 'cbt', 'act' ) as $approach ) : ?>
+					<section class="individual-approach-card">
+						<span class="eyebrow" aria-hidden="true"><?php echo esc_html( strtoupper( $approach ) ); ?></span>
+						<h3><?php custom_starter_individual_text( $approach . '_title' ); ?></h3>
+						<p class="copy"><?php custom_starter_individual_text( $approach . '_text' ); ?></p>
+					</section>
+				<?php endforeach; ?>
+			</div>
 		</section>
 		<?php $topics = custom_starter_individual_topics(); if ( $topics ) : ?>
 			<section class="individual-topics">

@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.6.5
+Version: 1.7.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1206,6 +1206,13 @@ a.button-outline:hover {
 .section-arriving { animation: section-arrive .55s ease-out both; }
 .section-arriving:focus-within { animation: none; }
 
+.individual-approach { padding-bottom: 3rem; }
+.individual-approach > header { max-width: 48rem; margin-bottom: 1.75rem; }
+.individual-approach-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.individual-approach-card { padding: clamp(1.5rem, 3vw, 2.5rem); background: #f7f3ef; border: 1px solid #e7ded5; border-radius: 8px; }
+.individual-approach-card h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.45rem; font-weight: 400; line-height: 1.35; }
+.individual-approach-card p:last-child { margin-bottom: 0; }
+
 @media (min-width: 1600px) {
 	.hero-copy {
 		padding-left: 5rem;
@@ -1301,6 +1308,7 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.individual-approach-grid { grid-template-columns: 1fr; }
 	.biography-intro, .biography-approach-grid, .biography-detail-row { grid-template-columns: 1fr; gap: 1.5rem; }
 	.biography-detail-row > div { padding-left: 0; border-left: 0; }
 	.biography-detail-row { padding-block: 1.5rem; }

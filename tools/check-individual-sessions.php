@@ -22,6 +22,10 @@ foreach ( $groups as $group ) {
 		verify_individual( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url' ), true ), 'Non-Free field type.' );
 	}
 }
+verify_individual( 23 === count( $keys ), 'Expected 23 ACF Free fields.' );
+verify_individual( '' !== custom_starter_individual_value( 'cbt_text' ) && '' !== custom_starter_individual_value( 'act_text' ), 'Both approach defaults must exist.' );
+$saved['tr_individual_cbt_text'] = 'Saved custom copy';
+verify_individual( 'Saved custom copy' === custom_starter_individual_value( 'cbt_text' ), 'Keep saved approach copy.' );
 verify_individual( 6 === count( custom_starter_individual_topics() ), 'Expected six preview topics.' );
 $saved['tr_individual_title'] = '';
 verify_individual( '' === custom_starter_individual_value( 'title' ), 'Saved empty title must stay empty.' );
