@@ -25,9 +25,7 @@ get_header();
 				</nav>
 				<section class="individual-hero">
 					<div>
-						<p class="eyebrow"><?php custom_starter_individual_text( 'eyebrow' ); ?></p>
 						<h1><?php custom_starter_individual_text( 'title' ); ?></h1>
-						<p class="individual-subtitle"><?php custom_starter_individual_text( 'subtitle' ); ?></p>
 						<p class="copy"><?php custom_starter_individual_text( 'intro' ); ?></p>
 						<a class="button" href="<?php echo esc_url( $contact_url ); ?>"><?php custom_starter_individual_text( 'button' ); ?> <span aria-hidden="true">→</span></a>
 					</div>
@@ -47,16 +45,14 @@ get_header();
 				</section>
 			</div>
 		</div>
-		<section class="individual-overview section-wrap">
-			<h2><?php custom_starter_individual_text( 'overview_title' ); ?></h2>
+		<div class="individual-verbatim-intro section-wrap">
 			<p class="copy"><?php custom_starter_individual_text( 'overview_text' ); ?></p>
-		</section>
+		</div>
 		<section class="individual-approach section-wrap">
 			<header><h2><?php custom_starter_individual_text( 'approach_title' ); ?></h2><p class="copy"><?php custom_starter_individual_text( 'approach_intro' ); ?></p></header>
 			<div class="individual-approach-grid">
 				<?php foreach ( array( 'cbt', 'act' ) as $approach ) : ?>
 					<section class="individual-approach-card">
-						<span class="eyebrow" aria-hidden="true"><?php echo esc_html( strtoupper( $approach ) ); ?></span>
 						<h3><?php custom_starter_individual_text( $approach . '_title' ); ?></h3>
 						<p class="copy"><?php custom_starter_individual_text( $approach . '_text' ); ?></p>
 					</section>
@@ -67,21 +63,14 @@ get_header();
 			<section class="individual-topics">
 				<div class="section-wrap">
 					<h2><?php custom_starter_individual_text( 'topics_title' ); ?></h2>
+					<p class="individual-topics-intro"><?php custom_starter_individual_text( 'topics_intro' ); ?></p>
 					<ul><?php foreach ( $topics as $topic ) : ?><li><?php echo esc_html( $topic ); ?></li><?php endforeach; ?></ul>
 				</div>
 			</section>
 		<?php endif; ?>
-		<section class="individual-meeting section-wrap">
-			<div><h2><?php custom_starter_individual_text( 'meeting_title' ); ?></h2><p class="copy"><?php custom_starter_individual_text( 'meeting_text' ); ?></p></div>
-			<aside class="individual-location">
-				<?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'address' ) ); ?>
-				<div><h3><?php custom_starter_individual_text( 'location_title' ); ?></h3><p class="copy"><?php custom_starter_individual_text( 'location_text' ); ?></p></div>
-			</aside>
-		</section>
+		<div class="section-wrap individual-closing"><p><em><?php custom_starter_individual_text( 'closing' ); ?></em></p></div>
 		<section class="contact-section contact-invitation individual-cta">
 			<div class="section-wrap">
-				<h2><?php custom_starter_individual_text( 'cta_title' ); ?></h2>
-				<p class="contact-intro"><?php custom_starter_individual_text( 'cta_text' ); ?></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>
 						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?>Καλέστε με τώρα</a>
