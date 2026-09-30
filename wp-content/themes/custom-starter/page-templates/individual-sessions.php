@@ -27,6 +27,7 @@ get_header();
 					<div>
 						<h1><?php custom_starter_individual_text( 'title' ); ?></h1>
 						<p class="copy"><?php custom_starter_individual_text( 'intro' ); ?></p>
+						<p class="copy"><?php custom_starter_individual_text( 'overview_text' ); ?></p>
 						<a class="button" href="<?php echo esc_url( $contact_url ); ?>"><?php custom_starter_individual_text( 'button' ); ?> <span aria-hidden="true">→</span></a>
 					</div>
 					<figure class="individual-photo">
@@ -45,10 +46,7 @@ get_header();
 				</section>
 			</div>
 		</div>
-		<div class="individual-verbatim-intro section-wrap">
-			<p class="copy"><?php custom_starter_individual_text( 'overview_text' ); ?></p>
-		</div>
-		<section class="individual-approach section-wrap">
+		<section class="individual-approach"><div class="section-wrap">
 			<header><h2><?php custom_starter_individual_text( 'approach_title' ); ?></h2><p class="copy"><?php custom_starter_individual_text( 'approach_intro' ); ?></p></header>
 			<div class="individual-approach-grid">
 				<?php foreach ( array( 'cbt', 'act' ) as $approach ) : ?>
@@ -58,19 +56,32 @@ get_header();
 					</section>
 				<?php endforeach; ?>
 			</div>
-		</section>
+		</div></section>
+		<figure class="individual-office-photo">
+			<?php
+			$office_id = absint( custom_starter_individual_value( 'office_image' ) );
+			if ( $office_id && wp_attachment_is_image( $office_id ) ) {
+				echo wp_get_attachment_image( $office_id, 'full', false, array( 'loading' => 'lazy', 'sizes' => '100vw' ) );
+			} else {
+				?>
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/service-couples.png' ) ); ?>" alt="" loading="lazy">
+				<figcaption><?php esc_html_e( 'Ενδεικτική εικόνα — εδώ θα μπει φωτογραφία του γραφείου.', 'custom-starter' ); ?></figcaption>
+				<?php
+			}
+			?>
+		</figure>
 		<?php $topics = custom_starter_individual_topics(); if ( $topics ) : ?>
 			<section class="individual-topics">
 				<div class="section-wrap">
 					<h2><?php custom_starter_individual_text( 'topics_title' ); ?></h2>
 					<p class="individual-topics-intro"><?php custom_starter_individual_text( 'topics_intro' ); ?></p>
-					<ul><?php foreach ( $topics as $topic ) : ?><li><?php echo esc_html( $topic ); ?></li><?php endforeach; ?></ul>
+					<ul><?php foreach ( $topics as $index => $topic ) : ?><li><span class="individual-topic-icon" aria-hidden="true"><?php get_template_part( 'template-parts/components/therapy-icon', null, array( 'number' => $index ) ); ?></span><span><?php echo esc_html( $topic ); ?></span></li><?php endforeach; ?></ul>
 				</div>
 			</section>
 		<?php endif; ?>
-		<div class="section-wrap individual-closing"><p><em><?php custom_starter_individual_text( 'closing' ); ?></em></p></div>
 		<section class="contact-section contact-invitation individual-cta">
 			<div class="section-wrap">
+				<p class="individual-closing"><em><?php custom_starter_individual_text( 'closing' ); ?></em></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>
 						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?>Καλέστε με τώρα</a>

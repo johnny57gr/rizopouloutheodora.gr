@@ -22,7 +22,7 @@ foreach ( $groups as $group ) {
 		verify_individual( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url' ), true ), 'Non-Free field type.' );
 	}
 }
-verify_individual( 16 === count( $keys ), 'Expected 16 ACF Free fields.' );
+verify_individual( 17 === count( $keys ), 'Expected 17 ACF Free fields.' );
 verify_individual( '' !== custom_starter_individual_value( 'cbt_text' ) && '' !== custom_starter_individual_value( 'act_text' ), 'Both approach defaults must exist.' );
 $saved['tr_individual_cbt_text'] = 'Old shortened text';
 verify_individual( 'Old shortened text' !== custom_starter_individual_value( 'cbt_text' ), 'Old draft must not override verbatim copy.' );
