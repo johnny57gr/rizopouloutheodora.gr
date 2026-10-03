@@ -8,7 +8,7 @@ $viber = custom_starter_viber_url();
 	<?php if ( $phone ) : ?>
 	<a class="contact-detail" href="<?php echo esc_url( $phone ); ?>">
 		<span class="contact-detail-icon"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?></span>
-		<span><?php custom_starter_home_text( 'phone' ); ?><small>Τηλέφωνο</small></span>
+		<span><?php custom_starter_home_text( 'phone' ); ?></span>
 	</a>
 	<?php endif; ?>
 	<div class="contact-detail">

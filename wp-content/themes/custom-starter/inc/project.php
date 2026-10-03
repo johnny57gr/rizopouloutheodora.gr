@@ -49,9 +49,9 @@ function custom_starter_home_schema() {
 			'phone' => array( 'Τηλέφωνο με κωδικό χώρας', 'text', '+30 698 456 5423' ),
 			'email' => array( 'Email', 'email', 'rizopouloutheodora@gmail.com' ),
 			'address' => array( 'Διεύθυνση', 'text', 'Βενιζέλου 27, Βέροια 59132' ),
-			'facebook' => array( 'Facebook URL', 'url', '' ),
+			'facebook' => array( 'Facebook URL', 'url', 'https://www.facebook.com/p/%CE%A1%CE%B9%CE%B6%CE%BF%CF%80%CE%BF%CF%8D%CE%BB%CE%BF%CF%85-%CE%98%CE%B5%CE%BF%CE%B4%CF%8E%CF%81%CE%B1-%CE%A8%CF%85%CF%87%CE%BF%CE%BB%CF%8C%CE%B3%CE%BF%CF%82-%CE%A8%CF%85%CF%87%CE%BF%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CF%8D%CF%84%CF%81%CE%B9%CE%B1-61582944533827/' ),
 			'viber' => array( 'Viber κινητό με κωδικό χώρας', 'text', '' ),
-			'linkedin' => array( 'LinkedIn URL', 'url', '' ),
+			'linkedin' => array( 'LinkedIn URL', 'url', 'https://www.linkedin.com/in/%CF%81%CE%B9%CE%B6%CE%BF%CF%80%CE%BF%CF%8D%CE%BB%CE%BF%CF%85-%CE%B8%CE%B5%CE%BF%CE%B4%CF%8E%CF%81%CE%B1-%CF%88%CF%85%CF%87%CE%BF%CE%BB%CF%8C%CE%B3%CE%BF%CF%82-%CF%88%CF%85%CF%87%CE%BF%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CF%8D%CF%84%CF%81%CE%B9%CE%B1-3b9a80221/?locale=el' ),
 			'whatsapp' => array( 'WhatsApp URL', 'url', '' ),
 			'blog_title' => array( 'Τίτλος άρθρων', 'text', 'Σκέψεις που μοιραζόμαστε' ),
 		) ),
@@ -59,7 +59,7 @@ function custom_starter_home_schema() {
 }
 /** Use confirmed contact fields so saved mockup details cannot override them. */
 function custom_starter_home_field_name( $name ) {
-	return ( in_array( $name, array( 'phone', 'email' ), true ) ? 'tr_contact_confirmed_' : 'tr_' ) . $name;
+	return ( in_array( $name, array( 'phone', 'email', 'facebook', 'linkedin' ), true ) ? 'tr_contact_confirmed_' : 'tr_' ) . $name;
 }
 function custom_starter_register_home_fields() {
 	foreach ( custom_starter_home_schema() as $section => $definition ) {

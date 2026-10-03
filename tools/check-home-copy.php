@@ -42,3 +42,13 @@ foreach ( array( '', '6984565423', '+30 698 456 5423', '00306984565423' ) as $nu
 $GLOBALS['contact_saved']['tr_viber'] = 'invalid';
 if ( '' !== custom_starter_viber_url() ) { throw new RuntimeException( 'Reject invalid Viber numbers.' ); }
 echo "Viber link checks passed.\n";
+
+// Confirm supplied social profiles override old saved placeholders and remain editable.
+$GLOBALS['contact_saved']['tr_facebook'] = 'https://example.test/old';
+if ( 'https://www.facebook.com/p/%CE%A1%CE%B9%CE%B6%CE%BF%CF%80%CE%BF%CF%8D%CE%BB%CE%BF%CF%85-%CE%98%CE%B5%CE%BF%CE%B4%CF%8E%CF%81%CE%B1-%CE%A8%CF%85%CF%87%CE%BF%CE%BB%CF%8C%CE%B3%CE%BF%CF%82-%CE%A8%CF%85%CF%87%CE%BF%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CF%8D%CF%84%CF%81%CE%B9%CE%B1-61582944533827/' !== custom_starter_home_value( 'facebook' ) ) { throw new RuntimeException( 'Incorrect confirmed social URL.' ); }
+$GLOBALS['contact_saved']['tr_contact_confirmed_facebook'] = 'https://example.test/new';
+if ( 'https://example.test/new' !== custom_starter_home_value( 'facebook' ) ) { throw new RuntimeException( 'Social URL must stay editable.' ); }
+$GLOBALS['contact_saved']['tr_linkedin'] = 'https://example.test/old';
+if ( 'https://www.linkedin.com/in/%CF%81%CE%B9%CE%B6%CE%BF%CF%80%CE%BF%CF%8D%CE%BB%CE%BF%CF%85-%CE%B8%CE%B5%CE%BF%CE%B4%CF%8E%CF%81%CE%B1-%CF%88%CF%85%CF%87%CE%BF%CE%BB%CF%8C%CE%B3%CE%BF%CF%82-%CF%88%CF%85%CF%87%CE%BF%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CF%8D%CF%84%CF%81%CE%B9%CE%B1-3b9a80221/?locale=el' !== custom_starter_home_value( 'linkedin' ) ) { throw new RuntimeException( 'Incorrect confirmed social URL.' ); }
+$GLOBALS['contact_saved']['tr_contact_confirmed_linkedin'] = 'https://example.test/new';
+if ( 'https://example.test/new' !== custom_starter_home_value( 'linkedin' ) ) { throw new RuntimeException( 'Social URL must stay editable.' ); }
