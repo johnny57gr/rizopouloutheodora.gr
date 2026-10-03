@@ -19,3 +19,16 @@ foreach ( $cases as $case ) {
  }
 }
 echo "Homepage copy checks passed.\n";
+
+function post_password_required( $id ) { return false; }
+function metadata_exists( $type, $id, $name ) { return array_key_exists( $name, $GLOBALS['contact_saved'] ); }
+function get_field( $name, $id ) { return $GLOBALS['contact_saved'][ $name ]; }
+$GLOBALS['contact_saved'] = array( 'tr_phone' => '+30 697 000 0000', 'tr_email' => 'old@example.test' );
+if ( 'tel:+306984565423' !== custom_starter_phone_url() || 'rizopouloutheodora@gmail.com' !== custom_starter_home_value( 'email' ) ) {
+ throw new RuntimeException( 'Confirmed contacts must replace saved mockup details.' );
+}
+$GLOBALS['contact_saved']['tr_contact_confirmed_email'] = 'updated@example.test';
+if ( 'updated@example.test' !== custom_starter_home_value( 'email' ) ) {
+ throw new RuntimeException( 'Future contact edits must remain editable.' );
+}
+echo "Confirmed contact checks passed.\n";

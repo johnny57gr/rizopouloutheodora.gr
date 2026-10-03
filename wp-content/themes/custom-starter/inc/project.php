@@ -46,8 +46,8 @@ function custom_starter_home_schema() {
 			'contact_title' => array( 'Τίτλος', 'textarea', "Είμαι εδώ για να συζητήσουμε\nό,τι σας απασχολεί." ),
 			'contact_intro' => array( 'Κείμενο πρόσκλησης επικοινωνίας', 'textarea', 'Για πληροφορίες ή για να προγραμματίσουμε μια συνάντηση, μπορείτε να με καλέσετε ή να μου στείλετε ένα μήνυμα μέσω της φόρμας επικοινωνίας.' ),
 			'contact_page_url' => array( 'Σύνδεσμος σελίδας Επικοινωνία', 'url', '' ),
-			'phone' => array( 'Τηλέφωνο με κωδικό χώρας', 'text', '' ),
-			'email' => array( 'Email', 'email', '' ),
+			'phone' => array( 'Τηλέφωνο με κωδικό χώρας', 'text', '+30 698 456 5423' ),
+			'email' => array( 'Email', 'email', 'rizopouloutheodora@gmail.com' ),
 			'address' => array( 'Διεύθυνση', 'text', 'Βενιζέλου 27, Βέροια 59132' ),
 			'facebook' => array( 'Facebook URL', 'url', '' ),
 			'viber' => array( 'Viber κινητό με κωδικό χώρας', 'text', '' ),
@@ -57,13 +57,17 @@ function custom_starter_home_schema() {
 		) ),
 	);
 }
+/** Use confirmed contact fields so saved mockup details cannot override them. */
+function custom_starter_home_field_name( $name ) {
+	return ( in_array( $name, array( 'phone', 'email' ), true ) ? 'tr_contact_confirmed_' : 'tr_' ) . $name;
+}
 function custom_starter_register_home_fields() {
 	foreach ( custom_starter_home_schema() as $section => $definition ) {
 		$fields = array();
 		foreach ( $definition[1] as $name => $spec ) {
-			$field = array( 'key' => 'field_tr_' . $name, 'name' => 'tr_' . $name, 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
+			$field = array( 'key' => 'field_' . custom_starter_home_field_name( $name ), 'name' => custom_starter_home_field_name( $name ), 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
 			if ( preg_match( '/^service_[1-4]_link$/', $name ) ) { $field['instructions'] = 'Σύνδεσμος της αντίστοιχης αναλυτικής υπηρεσίας. Αν μείνει κενό, η πρώτη υπηρεσία εντοπίζει αυτόματα τη σελίδα Ατομικής Ψυχοθεραπείας· στις υπόλοιπες δεν εμφανίζεται βελάκι μέχρι να οριστεί σύνδεσμος.'; }
-			if ( 'phone' === $name ) { $field['instructions'] = 'Προσωρινά, όταν είναι κενό, εμφανίζεται το +30 697 000 0000 του mockup. Συμπληρώστε τον πραγματικό αριθμό πριν τη δημοσίευση.'; }
+			if ( 'phone' === $name ) { $field['instructions'] = 'Αριθμός με κωδικό χώρας. Χρησιμοποιείται σε όλα τα κουμπιά κλήσης της ιστοσελίδας.'; }
 			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Προαιρετική αντικατάσταση. Αν μείνει κενό, εντοπίζεται αυτόματα η δημοσιευμένη σελίδα με πρότυπο Επικοινωνία.'; }
 			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να εμφανίζεται μόνο η ένδειξη Viber χωρίς σύνδεσμο.'; }
 			if ( 'textarea' === $spec[1] ) { $field['rows'] = 3; $field['new_lines'] = ''; }
@@ -113,12 +117,11 @@ add_filter( 'acf/load_value', 'custom_starter_home_refresh_copy', 10, 3 );
 
 function custom_starter_home_value( $name ) {
 	$id = (int) get_option( 'page_on_front' );
-	if ( $id && ! post_password_required( $id ) && function_exists( 'get_field' ) && metadata_exists( 'post', $id, 'tr_' . $name ) ) {
-		$value = get_field( 'tr_' . $name, $id );
+	if ( $id && ! post_password_required( $id ) && function_exists( 'get_field' ) && metadata_exists( 'post', $id, custom_starter_home_field_name( $name ) ) ) {
+		$value = get_field( custom_starter_home_field_name( $name ), $id );
 		$value = is_scalar( $value ) ? (string) $value : '';
-		return 'phone' === $name && '' === trim( $value ) ? '+30 697 000 0000' : $value;
+		return $value;
 	}
-	if ( 'phone' === $name ) { return '+30 697 000 0000'; }
 	foreach ( custom_starter_home_schema() as $section ) { if ( isset( $section[1][ $name ] ) ) { return (string) $section[1][ $name ][2]; } }
 	return '';
 }
