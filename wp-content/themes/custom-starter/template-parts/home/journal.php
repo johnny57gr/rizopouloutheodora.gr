@@ -17,7 +17,7 @@ $displayed = 0;
 <?php
 $examples = array(
 	array( 'still-life-placeholder.png', 'Πώς να διαχειριστώ το άγχος στην καθημερινότητα;' ),
-	array( 'journal-stones.png', 'Η σημασία της αυτοφροντίδας' ),
+	array( 'journal-stones.png', 'Κατανοώντας τις σκέψεις και τα συναισθήματά μας' ),
 	array( 'journal-book.png', 'Επικοινωνία στη σχέση: μικρές αλλαγές, μεγάλη διαφορά' ),
 );
 foreach ( array_slice( $examples, 0, max( 0, 3 - $displayed ) ) as $example ) :
