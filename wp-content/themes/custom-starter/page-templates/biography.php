@@ -51,7 +51,7 @@ get_header();
 				</div>
 			</div>
 		</section>
-		<figure class="section-wrap biography-office">
+		<figure class="section-wrap biography-office" data-position="<?php echo esc_attr( custom_starter_biography_office_position() ); ?>">
 			<?php
 			$office_image_id = absint( custom_starter_biography_value( 'office_image' ) );
 			if ( $office_image_id && wp_attachment_is_image( $office_image_id ) ) {

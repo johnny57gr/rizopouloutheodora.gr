@@ -25,10 +25,10 @@ foreach ( $groups as $group ) {
 	foreach ( $group['fields'] as $field ) {
 		check_services( ! isset( $keys[ $field['key'] ] ), 'Duplicate field key.' );
 		$keys[ $field['key'] ] = true;
-		check_services( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url', 'wysiwyg' ), true ), 'Non-Free field.' );
+		check_services( in_array( $field['type'], array( 'text', 'textarea', 'image', 'url', 'wysiwyg', 'select' ), true ), 'Non-Free field.' );
 	}
 }
-check_services( 17 === count( $keys ), 'Expected 17 biography fields.' );
+check_services( 18 === count( $keys ), 'Expected 18 biography fields.' );
 $saved['tr_biography_exact_approach_text'] = '';
 check_services( '' === custom_starter_biography_value( 'approach_text' ), 'Keep intentionally hidden questions.' );
 $saved['tr_biography_exact_education_text'] = array( 'unexpected' );
@@ -52,3 +52,14 @@ foreach ( array( 'education' => 3, 'training' => 2, 'experience' => 4, 'voluntee
 	check_services( substr_count( $formatted, '<div' ) === substr_count( $formatted, '</div>' ), 'Unbalanced groups.' );
 }
 echo "PASS: entry grouping and verbatim text preservation.\n";
+
+check_services( 'center-center' === custom_starter_biography_office_position(), 'Center default.' );
+foreach ( array_keys( custom_starter_biography_positions() ) as $position ) {
+	$saved['tr_biography_office_position'] = $position;
+	check_services( $position === custom_starter_biography_office_position(), 'Retain valid position.' );
+}
+foreach ( array( '', 'invalid', array( 'top-left' ) ) as $invalid ) {
+	$saved['tr_biography_office_position'] = $invalid;
+	check_services( 'center-center' === custom_starter_biography_office_position(), 'Safe fallback.' );
+}
+echo "PASS: all nine photo positions and invalid-value fallback.\n";

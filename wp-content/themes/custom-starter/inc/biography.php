@@ -19,6 +19,7 @@ function custom_starter_biography_schema() {
 		) ),
 		'office' => array( 'Φωτογραφία χώρου', array(
 			'office_image' => array( 'Οριζόντια φωτογραφία γραφείου', 'image', '' ),
+			'office_position' => array( 'Θέση φωτογραφίας μέσα στο πλαίσιο', 'select', 'center-center' ),
 		) ),
 		'education' => array( 'Ακαδημαϊκή Εκπαίδευση & Ερευνητικό Έργο', array(
 			'education_title' => array( 'Τίτλος', 'text', 'Ακαδημαϊκή Εκπαίδευση & Ερευνητικό Έργο' ),
@@ -41,7 +42,7 @@ function custom_starter_biography_schema() {
 
 /** Keep uploaded images and identity; isolate the original copy from old drafts. */
 function custom_starter_biography_field_name( $name ) {
-	return ( in_array( $name, array( 'image', 'office_image', 'eyebrow', 'title', 'profession', 'intro_button' ), true ) ? 'tr_biography_' : 'tr_biography_exact_' ) . $name;
+	return ( in_array( $name, array( 'image', 'office_image', 'office_position', 'eyebrow', 'title', 'profession', 'intro_button' ), true ) ? 'tr_biography_' : 'tr_biography_exact_' ) . $name;
 }
 
 /** Register groups solely for the biography template. */
@@ -66,6 +67,12 @@ function custom_starter_register_biography_fields() {
 				$field['preview_size'] = 'medium';
 				$field['mime_types'] = 'jpg,jpeg,png,webp';
 				$field['instructions'] = 'Χωρίς επιλογή εμφανίζεται ουδέτερο πλαίσιο αναμονής φωτογραφίας. Συμπληρώστε το εναλλακτικό κείμενο στη Βιβλιοθήκη Πολυμέσων.';
+			}
+			if ( 'office_position' === $name ) {
+				$field['choices'] = custom_starter_biography_positions();
+				$field['return_format'] = 'value';
+				$field['allow_null'] = 0;
+				$field['instructions'] = 'Η πρώτη λέξη αφορά την κάθετη θέση και η δεύτερη την οριζόντια. Αλλάζει το σημείο που φαίνεται όταν η φωτογραφία κόβεται μέσα στο πλαίσιο. Αποθηκεύστε και δείτε τη σελίδα.';
 			}
 			if ( 'office_image' === $name ) {
 				$field['instructions'] = 'Επιλέξτε οριζόντια φωτογραφία του χώρου. Χωρίς επιλογή εμφανίζεται ενδεικτική εικόνα με σχετική λεζάντα. Συμπληρώστε το εναλλακτικό κείμενο στα Πολυμέσα.';
@@ -149,4 +156,26 @@ function custom_starter_biography_group_content( $content ) {
 		$content
 	);
 	return $html . ( $open ? '</div>' : '' );
+}
+
+/** Nine focal positions; identifiers map only to predefined CSS rules. */
+function custom_starter_biography_positions() {
+	return array(
+		'center-center' => 'Κέντρο – Κέντρο',
+		'top-center' => 'Πάνω – Κέντρο',
+		'bottom-center' => 'Κάτω – Κέντρο',
+		'center-left' => 'Κέντρο – Αριστερά',
+		'center-right' => 'Κέντρο – Δεξιά',
+		'top-left' => 'Πάνω – Αριστερά',
+		'top-right' => 'Πάνω – Δεξιά',
+		'bottom-left' => 'Κάτω – Αριστερά',
+		'bottom-right' => 'Κάτω – Δεξιά',
+	);
+}
+
+/** Invalid or cleared values retain the existing centered crop. */
+function custom_starter_biography_office_position() {
+	$value = custom_starter_biography_value( 'office_position' );
+	$positions = custom_starter_biography_positions();
+	return isset( $positions[ $value ] ) ? $value : 'center-center';
 }
