@@ -29,7 +29,7 @@ $image_id = absint( custom_starter_services_value( $prefix . '_image' ) );
 		<span class="services-overview-icon" aria-hidden="true"><?php get_template_part( 'template-parts/components/service-icon', null, array( 'number' => $number ) ); ?></span></div>
 		<h2 id="overview-service-<?php echo esc_attr( $number ); ?>"><?php echo esc_html( $title ); ?></h2>
 		<p class="copy"><?php echo esc_html( custom_starter_services_value( $prefix . '_text' ) ); ?></p>
-		<a class="text-link" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?> <span aria-hidden="true">→</span><span class="screen-reader-text"> — <?php echo esc_html( $title ); ?></span></a>
+		<a class="button" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?><span class="screen-reader-text"> — <?php echo esc_html( $title ); ?></span></a>
 	</div>
 </section>
 
