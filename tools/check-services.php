@@ -4,6 +4,7 @@ define( 'ABSPATH', __DIR__ );
 $groups = array();
 $saved = array();
 function add_action( $hook, $callback ) {}
+function add_filter( $hook, $callback, $priority, $args ) {}
 function get_queried_object_id() { return 40; }
 function metadata_exists( $type, $id, $name ) { return array_key_exists( $name, $GLOBALS['saved'] ); }
 function get_field( $name, $id ) { return $GLOBALS['saved'][ $name ]; }
@@ -34,3 +35,7 @@ check_services( '' === custom_starter_services_value( 'service_1_text' ), 'Keep 
 check_services( 'https://example.test/services/' === custom_starter_services_page_url(), 'Discover published overview.' );
 check_services( '' === custom_starter_service_template_url( 'page-templates/individual-sessions.php' ), 'Missing detail pages must not get invented URLs.' );
 echo "PASS: 25 ACF Free fields, saved blanks and published-page discovery.\n";
+
+check_services( 'Συμβουλευτική & Ψυχοθεραπεία Εφήβων' === custom_starter_services_refresh_copy( 'Παιδιά / Έφηβοι', 40, array( 'name' => 'tr_services_service_3_title' ) ), 'Replace old teens heading.' );
+check_services( 'Δικό μου κείμενο' === custom_starter_services_refresh_copy( 'Δικό μου κείμενο', 40, array( 'name' => 'tr_services_service_3_text' ) ), 'Preserve edited copy.' );
+check_services( '' === custom_starter_services_refresh_copy( '', 40, array( 'name' => 'tr_services_service_3_text' ) ), 'Preserve blank copy.' );

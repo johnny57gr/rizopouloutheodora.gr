@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.7
+Version: 1.8.8
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1123,21 +1123,30 @@ a.button-outline:hover {
 .individual-office-photo figcaption { text-align: center; }
 .individual-back { display: inline-block; margin-top: 1.5rem; }
 
-.services-page-intro { background: var(--pale); padding: 1.25rem 0 3rem; }
-.services-page-intro header { text-align: center; max-width: 62rem; margin: 2rem auto 0; }
-.services-page-intro h1 { font-size: clamp(2rem, 3.3vw, 3rem); }
+.services-page-intro { background: var(--pale); padding: 1.25rem 0 3.5rem; }
+.services-page-intro header { text-align: center; max-width: 48rem; margin: 2.5rem auto 0; }
+.services-page-intro h1 { font-size: clamp(2rem, 3.8vw, 3.5rem); text-wrap: balance; }
 .services-page-intro header > p:last-child { margin-bottom: 0; }
-.services-overview { padding-block: 1rem; }
-.services-overview-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2.5rem; padding-block: 1.5rem; }
-.services-overview-row + .services-overview-row { border-top: 1px solid var(--line); }
+.services-jump-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .65rem; margin-top: 2rem; }
+.services-jump-links a { display: inline-flex; align-items: center; gap: .8rem; padding: .7rem 1rem; min-height: 44px; border: 1px solid var(--line); border-radius: 30px; background: #fff; color: var(--accent); font-size: .85rem; text-decoration: none; }
+.services-jump-links a:hover, .services-jump-links a:focus-visible { background: #e9dfd6; }
+.services-overview { padding-block: 3.5rem; }
+.services-overview-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #faf7f4; }
+.services-overview-row + .services-overview-row { margin-top: 2.5rem; }
+.services-overview-row:nth-child(even) { background: #f2eee8; }
 .services-overview-row:nth-child(even) .services-overview-photo { order: 2; }
-.services-overview-photo { margin: 0; }
-.services-overview-photo img { display: block; width: 100%; height: 285px; object-fit: cover; }
+.services-overview-photo { margin: 0; min-height: 350px; }
+.services-overview-photo img { display: block; width: 100%; height: 100%; min-height: 350px; object-fit: cover; }
 .services-overview-row:first-child img { object-position: center 60%; }
-.service-number { display: block; font-size: .85rem; color: var(--accent); margin-bottom: .5rem; }
-.services-overview-copy { padding: 1rem 0; }
-.services-overview-copy h2 { font-size: clamp(1.8rem, 2.7vw, 2.5rem); }
-.services-overview-copy .text-link { display: inline-block; margin-top: .5rem; border-bottom: 1px solid var(--accent); padding-bottom: .2rem; }
+.services-overview-marker { display: flex; align-items: center; gap: 1rem; color: var(--accent); margin-bottom: 1.25rem; }
+.service-number { font-family: Georgia, serif; font-size: 1.5rem; }
+.services-overview-marker::after { content: ''; height: 1px; width: 3rem; background: var(--line); }
+.services-overview-icon { display: inline-flex; width: 30px; height: 30px; }
+.services-overview-icon svg { width: 100%; height: 100%; }
+.services-overview-copy { align-self: center; padding: clamp(1.5rem, 3.5vw, 3.5rem); }
+.services-overview-copy h2 { font-size: clamp(1.8rem, 2.7vw, 2.5rem); text-wrap: balance; scroll-margin-top: 8rem; }
+.services-overview-copy .copy { font-size: 1rem; line-height: 1.75; }
+.services-overview-copy .text-link { display: inline-block; margin-top: .5rem; border-bottom: 1px solid var(--accent); padding-block: .5rem; }
 
 /* Responsive: large-screen adjustments, then descending max-width breakpoints. */
 
@@ -1349,9 +1358,12 @@ a.button-outline:hover {
 	.faq-photo { max-height: 300px; }
 	.services-page-intro { padding-bottom: 2rem; }
 	.services-page-intro .breadcrumbs { flex-wrap: wrap; }
-	.services-overview-row { grid-template-columns: 1fr; gap: .5rem; }
+	.services-overview { padding-block: 2rem; }
+	.services-overview-row { grid-template-columns: 1fr; }
 	.services-overview-row:nth-child(even) .services-overview-photo { order: 0; }
-	.services-overview-photo img { height: 235px; }
+	.services-overview-photo { min-height: 0; }
+	.services-overview-photo img { height: 260px; min-height: 0; }
+	.services-jump-links { justify-content: flex-start; }
 	.individual-hero { grid-template-columns: 1fr; gap: 1.5rem; }
 	.individual-photo img { height: 320px; min-height: 0; flex: none; mask-image: none; }
 	.individual-topics ul { grid-template-columns: 1fr; }

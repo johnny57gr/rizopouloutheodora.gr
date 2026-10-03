@@ -26,6 +26,11 @@ get_header();
 					<h1><?php echo esc_html( custom_starter_services_value( 'title' ) ); ?></h1>
 					<p class="copy"><?php echo esc_html( custom_starter_services_value( 'intro' ) ); ?></p>
 				</header>
+				<nav class="services-jump-links" aria-label="Επιλογή υπηρεσίας">
+					<?php for ( $number = 1; $number <= 4; $number++ ) : ?>
+						<a href="#overview-service-<?php echo esc_attr( $number ); ?>"><?php echo esc_html( custom_starter_services_value( 'service_' . $number . '_title' ) ); ?> <span aria-hidden="true">↓</span></a>
+					<?php endfor; ?>
+				</nav>
 			</div>
 		</div>
 		<div class="services-overview section-wrap">
