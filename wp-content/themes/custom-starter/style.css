@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.8
+Version: 1.8.9
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1083,23 +1083,14 @@ a.button-outline:hover {
 	gap: 3rem;
 }
 
-.footer-grid .menu {
-	display: grid;
-	margin: 0;
-	font-size: .85rem;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: .1rem 1rem;
-	align-items: start;
-}
-
-.footer-grid .menu li {
-	min-width: 0;
-}
-
-.footer-grid .menu .sub-menu {
-	display: block;
-	padding-inline-start: .75rem;
-}
+.footer-service-list { list-style: none; padding: 0; margin: 0; }
+.footer-service-list li + li { margin-top: .6rem; }
+.footer-service-list a { display: inline-block; padding-block: .3rem; color: var(--muted); text-decoration: none; font-size: .9rem; }
+.footer-service-list a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .3rem; }
+.footer-menu-title { font-family: Georgia, serif; font-size: 1.25rem; color: var(--ink); margin-bottom: 1.25rem; }
+.footer-grid address .footer-menu-title { margin-bottom: 1.25rem; }
+.footer-brand-note { margin: 1rem 0 0; max-width: 17rem; font-size: .85rem; color: var(--muted); }
+.footer-grid .footer-brand { display: block; }
 
 /* Individual Sessions: a layout exclusive to this service. */
 .individual-page { padding: 0; }

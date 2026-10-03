@@ -69,7 +69,7 @@ function custom_starter_register_home_fields() {
 			if ( preg_match( '/^service_[1-4]_link$/', $name ) ) { $field['instructions'] = 'Σύνδεσμος της αντίστοιχης αναλυτικής υπηρεσίας. Αν μείνει κενό, η πρώτη υπηρεσία εντοπίζει αυτόματα τη σελίδα Ατομικής Ψυχοθεραπείας· στις υπόλοιπες δεν εμφανίζεται βελάκι μέχρι να οριστεί σύνδεσμος.'; }
 			if ( 'phone' === $name ) { $field['instructions'] = 'Αριθμός με κωδικό χώρας. Χρησιμοποιείται σε όλα τα κουμπιά κλήσης της ιστοσελίδας.'; }
 			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Προαιρετική αντικατάσταση. Αν μείνει κενό, εντοπίζεται αυτόματα η δημοσιευμένη σελίδα με πρότυπο Επικοινωνία.'; }
-			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να εμφανίζεται μόνο η ένδειξη Viber χωρίς σύνδεσμο.'; }
+			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να χρησιμοποιείται το τηλέφωνο επικοινωνίας.'; }
 			if ( 'textarea' === $spec[1] ) { $field['rows'] = 3; $field['new_lines'] = ''; }
 			if ( 'image' === $spec[1] ) { $field['return_format'] = 'id'; $field['preview_size'] = 'medium'; $field['mime_types'] = 'jpg,jpeg,png,webp'; $field['instructions'] = 'Χωρίς επιλογή εμφανίζεται η προσωρινή εικόνα του σχεδιασμού.'; }
 			$fields[] = $field;
@@ -145,4 +145,13 @@ function custom_starter_project_menu() {
 		printf( '<li><a href="%s">%s</a></li>', esc_url( $url ), esc_html( $label ) );
 }
 	echo '</ul>';
+}
+
+/** Use the shared mobile when no separate Viber number is supplied. */
+function custom_starter_viber_url() {
+	$number = trim( custom_starter_home_value( 'viber' ) );
+	$number = preg_replace( '/[^0-9]/', '', $number ? $number : custom_starter_home_value( 'phone' ) );
+	if ( 0 === strpos( $number, '00' ) ) { $number = substr( $number, 2 ); }
+	if ( preg_match( '/^69[0-9]{8}$/', $number ) ) { $number = '30' . $number; }
+	return preg_match( '/^[0-9]{6,15}$/', $number ) ? 'viber://chat?number=%2B' . $number : '';
 }

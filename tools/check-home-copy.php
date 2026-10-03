@@ -32,3 +32,13 @@ if ( 'updated@example.test' !== custom_starter_home_value( 'email' ) ) {
  throw new RuntimeException( 'Future contact edits must remain editable.' );
 }
 echo "Confirmed contact checks passed.\n";
+
+foreach ( array( '', '6984565423', '+30 698 456 5423', '00306984565423' ) as $number ) {
+ $GLOBALS['contact_saved']['tr_viber'] = $number;
+ if ( 'viber://chat?number=%2B306984565423' !== custom_starter_viber_url() ) {
+  throw new RuntimeException( 'Viber fallback or normalization failed.' );
+ }
+}
+$GLOBALS['contact_saved']['tr_viber'] = 'invalid';
+if ( '' !== custom_starter_viber_url() ) { throw new RuntimeException( 'Reject invalid Viber numbers.' ); }
+echo "Viber link checks passed.\n";
