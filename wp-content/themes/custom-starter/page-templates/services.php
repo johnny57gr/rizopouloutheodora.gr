@@ -28,7 +28,7 @@ get_header();
 				</header>
 				<nav class="services-jump-links" aria-label="Επιλογή υπηρεσίας">
 					<?php for ( $number = 1; $number <= 4; $number++ ) : ?>
-						<a href="#overview-service-<?php echo esc_attr( $number ); ?>"><?php echo esc_html( custom_starter_services_value( 'service_' . $number . '_title' ) ); ?> <span aria-hidden="true">↓</span></a>
+						<a href="#overview-service-<?php echo esc_attr( $number ); ?>"><?php echo esc_html( custom_starter_services_value( 'service_' . $number . '_title' ) ); ?></a>
 					<?php endfor; ?>
 				</nav>
 			</div>
