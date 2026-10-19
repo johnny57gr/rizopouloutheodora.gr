@@ -22,13 +22,10 @@
 			<nav id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'custom-starter' ); ?>">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu', 'fallback_cb' => 'custom_starter_project_menu' ) ); ?>
 			</nav>
-		<?php if ( custom_starter_phone_url() ) : ?>
-			<a class="button header-phone" href="<?php echo esc_url( custom_starter_phone_url() ); ?>">
-				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.2 2.48.57 3.6a1 1 0 0 1-.24 1z"/></svg>
-				<span><?php custom_starter_home_text( 'phone' ); ?></span>
-			</a>
-		<?php else : ?>
-			<a class="button header-phone" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Επικοινωνία <span aria-hidden="true">→</span></a>
-		<?php endif; ?>
+		<?php
+		$contact_url = custom_starter_contact_page_url();
+		$contact_url = $contact_url ? $contact_url : home_url( '/#contact' );
+		?>
+		<a class="button header-phone" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Κλείστε ραντεβού', 'custom-starter' ); ?></a>
 	</div>
 </header>
