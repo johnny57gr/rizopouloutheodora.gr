@@ -73,7 +73,7 @@ get_header();
 				<p class="contact-intro"><?php echo esc_html( custom_starter_faq_value( 'cta_text' ) ); ?></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>
-						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?><?php esc_html_e( 'Καλέστε με τώρα', 'custom-starter' ); ?></a>
+						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?><?php esc_html_e( 'Κλείστε ραντεβού', 'custom-starter' ); ?></a>
 					<?php endif; ?>
 					<a class="button button-outline" href="<?php echo esc_url( $contact_url ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'email' ) ); ?><?php esc_html_e( 'Φόρμα επικοινωνίας', 'custom-starter' ); ?></a>
 				</div>

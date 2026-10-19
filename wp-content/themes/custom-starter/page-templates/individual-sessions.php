@@ -84,7 +84,7 @@ get_header();
 				<p class="individual-closing"><em><?php custom_starter_individual_text( 'closing' ); ?></em></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>
-						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?>Καλέστε με τώρα</a>
+						<a class="button" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?>Κλείστε ραντεβού</a>
 					<?php endif; ?>
 					<a class="button button-outline" href="<?php echo esc_url( $contact_url ); ?>"><?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'email' ) ); ?>Φόρμα επικοινωνίας</a>
 				</div>

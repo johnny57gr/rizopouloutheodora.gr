@@ -12,7 +12,7 @@ $contact_url = $contact_url ? $contact_url : '#';
 			<?php if ( custom_starter_phone_url() ) : ?>
 				<a class="button contact-phone" href="<?php echo esc_url( custom_starter_phone_url() ); ?>">
 					<?php get_template_part( 'template-parts/components/contact-icon', null, array( 'icon' => 'phone' ) ); ?>
-					<span>Καλέστε με τώρα: <?php custom_starter_home_text( 'phone' ); ?></span>
+					<span><?php esc_html_e( 'Κλείστε ραντεβού', 'custom-starter' ); ?></span>
 				</a>
 			<?php endif; ?>
 				<a class="button button-outline" href="<?php echo esc_url( $contact_url ); ?>">
