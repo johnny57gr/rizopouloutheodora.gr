@@ -4,8 +4,11 @@ defined( 'ABSPATH' ) || exit;
 function custom_starter_home_schema() {
 	return array(
 		'hero' => array( 'Κεντρική ενότητα', array(
-			'hero_title' => array( 'Τίτλος', 'textarea', 'Καλώς ήρθατε στην ιστοσελίδα μου' ),
+			'hero_eyebrow' => array( 'Μικρός τίτλος', 'text', 'ΑΣΦΑΛΕΙΑ · ΑΠΟΔΟΧΗ · ΣΕΒΑΣΜΟΣ' ),
+			'hero_title' => array( 'Τίτλος', 'textarea', 'Μαζί, προς μια ζωή με νόημα' ),
+			'hero_text' => array( 'Κείμενο', 'textarea', 'Σε ένα ασφαλές περιβάλλον αποδοχής, κατανοούμε τις δυσκολίες σας και αναζητούμε νέους τρόπους διαχείρισης των σκέψεων και των συναισθημάτων σας.' ),
 			'hero_image' => array( 'Εικόνα', 'image', '' ),
+			'hero_button' => array( 'Κουμπί', 'text', 'Επικοινωνήστε μαζί μου' ),
 		) ),
 		'services' => array( 'Υπηρεσίες', array(
 			'services_title' => array( 'Τίτλος', 'text', 'Υποστήριξη με επίκεντρο τις ανάγκες σας' ),
@@ -56,7 +59,6 @@ function custom_starter_home_schema() {
 }
 /** Use confirmed contact fields so saved mockup details cannot override them. */
 function custom_starter_home_field_name( $name ) {
-	if ( in_array( $name, array( 'hero_title', 'hero_image' ), true ) ) { return 'tr_welcome_' . $name; }
 	return ( in_array( $name, array( 'phone', 'email', 'facebook', 'linkedin' ), true ) ? 'tr_contact_confirmed_' : 'tr_' ) . $name;
 }
 function custom_starter_register_home_fields() {
