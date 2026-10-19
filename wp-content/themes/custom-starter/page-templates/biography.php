@@ -42,28 +42,6 @@ get_header();
 				</header>
 			</div>
 		</div>
-		<section class="biography-approach">
-			<div class="section-wrap biography-approach-grid">
-				<div><h2><?php echo esc_html( custom_starter_biography_value( 'approach_title' ) ); ?></h2></div>
-				<div class="biography-approach-copy">
-					<?php echo wpautop( esc_html( custom_starter_biography_value( 'approach_text' ) ) ); ?>
-					<div class="biography-values"><?php echo wp_kses_post( custom_starter_biography_value( 'values' ) ) ; ?></div>
-				</div>
-			</div>
-		</section>
-		<figure class="section-wrap biography-office" data-position="<?php echo esc_attr( custom_starter_biography_office_position() ); ?>">
-			<?php
-			$office_image_id = absint( custom_starter_biography_value( 'office_image' ) );
-			if ( $office_image_id && wp_attachment_is_image( $office_image_id ) ) {
-				echo wp_get_attachment_image( $office_image_id, 'full', false, array( 'class' => 'biography-office-photo', 'loading' => 'lazy', 'sizes' => '(max-width: 700px) calc(100vw - 32px), 1200px' ) );
-			} else {
-				?>
-				<img class="biography-office-photo" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/interior-placeholder.png' ) ); ?>" alt="" loading="lazy">
-				<figcaption><?php esc_html_e( 'Ενδεικτική εικόνα — η φωτογραφία του γραφείου θα προστεθεί σύντομα.', 'custom-starter' ); ?></figcaption>
-				<?php
-			}
-			?>
-		</figure>
 		<div class="section-wrap biography-background">
 			<?php foreach ( array( 'education', 'training', 'experience', 'volunteering' ) as $section ) : ?>
 				<section class="biography-detail-row">
@@ -73,6 +51,15 @@ get_header();
 			<?php endforeach; ?>
 
 		</div>
+		<section class="biography-approach">
+			<div class="section-wrap biography-approach-grid">
+				<div><h2><?php echo esc_html( custom_starter_biography_value( 'approach_title' ) ); ?></h2></div>
+				<div class="biography-approach-copy">
+					<?php echo wpautop( esc_html( custom_starter_biography_value( 'approach_text' ) ) ); ?>
+					<div class="biography-values"><?php echo wp_kses_post( custom_starter_biography_value( 'values' ) ) ; ?></div>
+				</div>
+			</div>
+		</section>
 		<section class="contact-section contact-invitation services-page-cta">
 			<div class="section-wrap">
 				<div class="contact-actions">

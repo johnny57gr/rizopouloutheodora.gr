@@ -4,6 +4,7 @@ define( 'ABSPATH', __DIR__ );
 $groups = array();
 $saved = array();
 function add_action( $hook, $callback ) {}
+function add_filter( $hook, $callback ) {}
 function get_queried_object_id() { return 40; }
 function metadata_exists( $type, $id, $name ) { return array_key_exists( $name, $GLOBALS['saved'] ); }
 function get_field( $name, $id ) { return $GLOBALS['saved'][ $name ]; }
@@ -44,11 +45,11 @@ echo "PASS: biography fields, template scope, saved blanks, scalar values and pa
 
 function wp_strip_all_tags( $value ) { return strip_tags( $value ); }
 $schema = custom_starter_biography_schema();
-foreach ( array( 'education' => 3, 'training' => 2, 'experience' => 4, 'volunteering' => 2 ) as $section => $count ) {
+foreach ( array( 'education' => 3, 'training' => 3, 'experience' => 4, 'volunteering' => 2 ) as $section => $count ) {
 	$raw = $schema[ $section ][1][ $section . '_text' ][2];
 	$formatted = custom_starter_biography_group_content( $raw );
 	check_services( strip_tags( $raw ) === strip_tags( $formatted ), 'Grouping must preserve every character.' );
-	check_services( $count === substr_count( $formatted, 'class="biography-entry"' ), 'Wrong entry grouping: ' . $section );
+	check_services( $count === substr_count( $formatted, '<div class="biography-entry' ), 'Wrong entry grouping: ' . $section );
 	check_services( substr_count( $formatted, '<div' ) === substr_count( $formatted, '</div>' ), 'Unbalanced groups.' );
 }
 echo "PASS: entry grouping and verbatim text preservation.\n";
@@ -63,3 +64,6 @@ foreach ( array( '', 'invalid', array( 'top-left' ) ) as $invalid ) {
 	check_services( 'center-center' === custom_starter_biography_office_position(), 'Safe fallback.' );
 }
 echo "PASS: all nine photo positions and invalid-value fallback.\n";
+
+check_services( '<p>Συνεχής εποπτική υποστήριξη σε CBT και ACT.</p>' === custom_starter_biography_training_correction( '<p>Συνεχής εποπτική υποστήριξη σε CBT, ACT και Θεραπεία Σχημάτων.</p>' ), 'Update saved training paragraph.' );
+check_services( '' === custom_starter_biography_training_correction( '' ), 'Keep empty training field.' );

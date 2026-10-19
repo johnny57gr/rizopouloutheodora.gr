@@ -27,7 +27,7 @@ function custom_starter_biography_schema() {
 		) ),
 		'training' => array( 'Ψυχοθεραπευτική Εξειδίκευση & Κατάρτιση', array(
 			'training_title' => array( 'Τίτλος', 'text', 'Ψυχοθεραπευτική Εξειδίκευση & Κατάρτιση' ),
-			'training_text' => array( 'Περιεχόμενο', 'wysiwyg', '<p>Γνωστική Συμπεριφορική Ψυχοθεραπεία (CBT): Τετραετής εξειδικευμένη εκπαίδευση στην Ελληνική Εταιρία Έρευνας της Συμπεριφοράς - Παράρτημα Μακεδονίας (πιστοποιημένη από την EABCT - European Association for Behavioural and Cognitive Therapies). Περιλαμβάνει εκατοντάδες ώρες θεωρητικής κατάρτισης, πρακτικής άσκησης, εποπτείας και διαχείρισης κλινικών περιστατικών.</p><p>Θεραπεία Αποδοχής και Δέσμευσης (ACT): Εκπαίδευση στην Ελληνική Εταιρία Έρευνας της Συμπεριφοράς.</p><p>Συνεχής Επαγγελματική Ανάπτυξη &amp; Δια Βίου Μάθηση:</p><p>Συνεχής εποπτική υποστήριξη σε CBT, ACT και Θεραπεία Σχημάτων.</p><p>Προσωπική θεραπεία και αδιάλειπτη παρακολούθηση επιστημονικών συνεδρίων και εξελίξεων στον τομέα της Ψυχολογίας.</p>' ),
+			'training_text' => array( 'Περιεχόμενο', 'wysiwyg', '<p>Γνωστική Συμπεριφορική Ψυχοθεραπεία (CBT): Τετραετής εξειδικευμένη εκπαίδευση στην Ελληνική Εταιρία Έρευνας της Συμπεριφοράς - Παράρτημα Μακεδονίας (πιστοποιημένη από την EABCT - European Association for Behavioural and Cognitive Therapies). Περιλαμβάνει εκατοντάδες ώρες θεωρητικής κατάρτισης, πρακτικής άσκησης, εποπτείας και διαχείρισης κλινικών περιστατικών.</p><p>Θεραπεία Αποδοχής και Δέσμευσης (ACT): Εκπαίδευση στην Ελληνική Εταιρία Έρευνας της Συμπεριφοράς.</p><p>Συνεχής Επαγγελματική Ανάπτυξη &amp; Δια Βίου Μάθηση:</p><p>Συνεχής εποπτική υποστήριξη σε CBT και ACT.</p><p>Προσωπική θεραπεία και αδιάλειπτη παρακολούθηση επιστημονικών συνεδρίων και εξελίξεων στον τομέα της Ψυχολογίας.</p>' ),
 		) ),
 		'experience' => array( 'Κλινική & Επαγγελματική Εμπειρία', array(
 			'experience_title' => array( 'Τίτλος', 'text', 'Κλινική & Επαγγελματική Εμπειρία' ),
@@ -96,6 +96,12 @@ function custom_starter_register_biography_fields() {
 }
 add_action( 'acf/init', 'custom_starter_register_biography_fields' );
 
+/** Apply the client's specific correction to previously saved training copy too. */
+function custom_starter_biography_training_correction( $value ) {
+	return is_string( $value ) ? str_replace( 'CBT, ACT και Θεραπεία Σχημάτων', 'CBT και ACT', $value ) : $value;
+}
+add_filter( 'acf/load_value/name=tr_biography_exact_training_text', 'custom_starter_biography_training_correction' );
+
 /** Read only this page's values; preserve intentional blanks. */
 function custom_starter_biography_value( $name ) {
 	$id = get_queried_object_id();
@@ -124,7 +130,7 @@ function custom_starter_biography_page_url() {
 function custom_starter_biography_group_content( $content ) {
 	$starts = array(
 		'Πτυχίο Ψυχολογίας', 'Πτυχιακή Εργασία:', 'Επιστημονική Δημοσίευση / Συνέδρια:',
-		'Γνωστική Συμπεριφορική Ψυχοθεραπεία', 'Θεραπεία Αποδοχής και Δέσμευσης',
+		'Γνωστική Συμπεριφορική Ψυχοθεραπεία', 'Θεραπεία Αποδοχής και Δέσμευσης', 'Συνεχής Επαγγελματική Ανάπτυξη',
 		'Κινητή Μονάδα Ψυχικής Υγείας Ενηλίκων Ημαθίας', 'Ψυχολογικό Κέντρο',
 		'Κέντρο Ειδικών Θεραπειών:', 'ΚΑΠΗ Δήμου Βέροιας:', 'ΚΕΘΕΑ / ΚΕΘΕΑ ΙΘΑΚΗ:', '«Πρωτοβουλία για το Παιδί»:',
 	);
@@ -151,7 +157,8 @@ function custom_starter_biography_group_content( $content ) {
 				$colon = strpos( $inner, ':' );
 				$inner = false === $colon ? '<strong>' . $inner . '</strong>' : '<strong>' . substr( $inner, 0, $colon + 1 ) . '</strong>' . substr( $inner, $colon + 1 );
 			}
-			return $prefix . '<div class="biography-entry"><p class="biography-entry-heading">' . $inner . '</p>';
+			$class = 0 === strpos( $plain, 'Συνεχής Επαγγελματική Ανάπτυξη' ) ? 'biography-entry biography-development' : 'biography-entry';
+			return $prefix . '<div class="' . $class . '"><p class="biography-entry-heading">' . $inner . '</p>';
 		},
 		$content
 	);
