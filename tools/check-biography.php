@@ -67,3 +67,10 @@ echo "PASS: all nine photo positions and invalid-value fallback.\n";
 
 check_services( '<p>Συνεχής εποπτική υποστήριξη σε CBT και ACT.</p>' === custom_starter_biography_training_correction( '<p>Συνεχής εποπτική υποστήριξη σε CBT, ACT και Θεραπεία Σχημάτων.</p>' ), 'Update saved training paragraph.' );
 check_services( '' === custom_starter_biography_training_correction( '' ), 'Keep empty training field.' );
+
+$experience = custom_starter_biography_group_content( $schema['experience'][1]['experience_text'][2] );
+$lists = custom_starter_biography_experience_lists( $experience );
+check_services( strip_tags( $experience ) === strip_tags( $lists ), 'Bullets preserve exact wording.' );
+check_services( 4 === substr_count( $lists, '<ul' ) && 6 === substr_count( $lists, '<li>' ), 'Four workplaces and six responsibilities.' );
+check_services( $lists === custom_starter_biography_experience_lists( $lists ), 'Existing lists remain unchanged.' );
+echo "PASS: experience lists and unchanged wording.\n";

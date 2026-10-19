@@ -186,3 +186,26 @@ function custom_starter_biography_office_position() {
 	$positions = custom_starter_biography_positions();
 	return isset( $positions[ $value ] ) ? $value : 'center-center';
 }
+
+/** Present experience descriptions as lists without changing the stored wording. */
+function custom_starter_biography_experience_lists( $content ) {
+	return preg_replace_callback(
+		'/<div class="biography-entry"><p class="biography-entry-heading">(.*?)<\/p>(.*?)<\/div>/su',
+		function ( $match ) {
+			$heading = $match[1];
+			$body = $match[2];
+			// Some entries place the description immediately after the bold label.
+			if ( preg_match( '/^(.*?<\/strong>)(.+)$/su', $heading, $parts ) && trim( wp_strip_all_tags( $parts[2] ) ) ) {
+				$heading = $parts[1];
+				$body = '<p>' . $parts[2] . '</p>' . $body;
+			}
+			// Preserve lists already entered in the editor; convert paragraph runs only.
+			$body = preg_replace_callback( '/(?:\s*<p\b[^>]*>.*?<\/p>)+/su', function ( $paragraphs ) {
+				$items = preg_replace( '/<p\b[^>]*>(.*?)<\/p>/su', '<li>$1</li>', $paragraphs[0] );
+				return '<ul class="biography-experience-list">' . $items . '</ul>';
+			}, $body );
+			return '<div class="biography-entry"><p class="biography-entry-heading">' . $heading . '</p>' . $body . '</div>';
+		},
+		$content
+	);
+}
