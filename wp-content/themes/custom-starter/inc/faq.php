@@ -36,7 +36,7 @@ function custom_starter_faq_schema() {
 		'aside_button' => array( 'Κείμενο συνδέσμου', 'text', 'Ρωτήστε με' ),
 	) );
 	$groups['cta'] = array( 'Πρόσκληση επικοινωνίας', array(
-		'cta_title' => array( 'Τίτλος', 'text', 'Είμαι εδώ για να συζητήσουμε ό,τι σας απασχολεί.' ),
+		'cta_title' => array( 'Τίτλος', 'text', '' ),
 		'cta_text' => array( 'Κείμενο', 'textarea', 'Καλέστε με ή στείλτε μου ένα μήνυμα μέσα από τη φόρμα επικοινωνίας.' ),
 	) );
 	return $groups;

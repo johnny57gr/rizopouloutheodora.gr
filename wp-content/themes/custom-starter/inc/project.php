@@ -43,7 +43,7 @@ function custom_starter_home_schema() {
 			'office_link' => array( 'Σύνδεσμος παρουσίασης', 'url', '' ),
 		) ),
 		'contact' => array( 'Επικοινωνία και στοιχεία ιστοσελίδας', array(
-			'contact_title' => array( 'Τίτλος', 'textarea', "Είμαι εδώ για να συζητήσουμε\nό,τι σας απασχολεί." ),
+			'contact_title' => array( 'Τίτλος', 'textarea', '' ),
 			'contact_intro' => array( 'Κείμενο πρόσκλησης επικοινωνίας', 'textarea', 'Για πληροφορίες ή για να προγραμματίσουμε μια συνάντηση, μπορείτε να με καλέσετε ή να μου στείλετε ένα μήνυμα μέσω της φόρμας επικοινωνίας.' ),
 			'contact_page_url' => array( 'Σύνδεσμος σελίδας Επικοινωνία', 'url', '' ),
 			'phone' => array( 'Τηλέφωνο με κωδικό χώρας', 'text', '+30 698 456 5423' ),
@@ -155,3 +155,13 @@ function custom_starter_viber_url() {
 	if ( preg_match( '/^69[0-9]{8}$/', $number ) ) { $number = '30' . $number; }
 	return preg_match( '/^[0-9]{6,15}$/', $number ) ? 'viber://chat?number=%2B' . $number : '';
 }
+
+/** Retire the client's rejected headings, including saved draft defaults. */
+function custom_starter_retired_contact_headings( $value, $post_id, $field ) {
+	if ( ! is_string( $value ) ) { return $value; }
+	$plain = trim( preg_replace( '/\s+/u', ' ', $value ) );
+	if ( 'tr_contact_page_title' === $field['name'] && 'Ας μιλήσουμε' === $plain ) { return 'Επικοινωνία'; }
+	if ( in_array( $field['name'], array( 'tr_contact_title', 'tr_faq_cta_title' ), true ) && 'Είμαι εδώ για να συζητήσουμε ό,τι σας απασχολεί.' === $plain ) { return ''; }
+	return $value;
+}
+add_filter( 'acf/load_value', 'custom_starter_retired_contact_headings', 10, 3 );

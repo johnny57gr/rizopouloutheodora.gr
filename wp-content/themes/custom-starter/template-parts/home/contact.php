@@ -3,10 +3,8 @@
 $contact_url = custom_starter_contact_page_url();
 $contact_url = $contact_url ? $contact_url : '#';
 ?>
-<section id="contact" class="contact-section contact-invitation" aria-labelledby="contact-invitation-title">
+<section id="contact" class="contact-section contact-invitation" aria-label="<?php esc_attr_e( 'Επικοινωνία', 'custom-starter' ); ?>">
 	<div class="section-wrap">
-		<p class="eyebrow"><?php esc_html_e( 'ΑΣ ΜΙΛΗΣΟΥΜΕ', 'custom-starter' ); ?></p>
-		<h2 id="contact-invitation-title"><?php custom_starter_home_text( 'contact_title' ); ?></h2>
 		<p class="contact-intro"><?php custom_starter_home_text( 'contact_intro' ); ?></p>
 		<div class="contact-actions">
 			<?php if ( custom_starter_phone_url() ) : ?>

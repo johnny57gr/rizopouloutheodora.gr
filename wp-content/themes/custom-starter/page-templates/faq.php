@@ -69,7 +69,7 @@ get_header();
 		</div>
 		<section class="contact-section contact-invitation services-page-cta">
 			<div class="section-wrap">
-				<h2><?php echo esc_html( custom_starter_faq_value( 'cta_title' ) ); ?></h2>
+				<?php if ( custom_starter_faq_value( 'cta_title' ) ) : ?><h2><?php echo esc_html( custom_starter_faq_value( 'cta_title' ) ); ?></h2><?php endif; ?>
 				<p class="contact-intro"><?php echo esc_html( custom_starter_faq_value( 'cta_text' ) ); ?></p>
 				<div class="contact-actions">
 					<?php if ( custom_starter_phone_url() ) : ?>

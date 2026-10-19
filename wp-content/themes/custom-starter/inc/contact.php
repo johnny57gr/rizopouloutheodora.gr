@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 /** Defaults are shared by the editor and the template. */
 function custom_starter_contact_schema() {
 	return array(
-		'title' => array( 'Κεντρικός τίτλος', 'text', 'Ας μιλήσουμε' ),
+		'title' => array( 'Κεντρικός τίτλος', 'text', 'Επικοινωνία' ),
 		'intro' => array( 'Εισαγωγικό κείμενο', 'textarea', 'Επικοινωνήστε μαζί μου για πληροφορίες ή για να προγραμματίσουμε μια συνάντηση.' ),
 		'details_title' => array( 'Τίτλος στοιχείων', 'text', 'Στοιχεία επικοινωνίας' ),
 		'form_title' => array( 'Τίτλος φόρμας', 'text', 'Στείλτε μου ένα μήνυμα' ),
