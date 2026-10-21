@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.15
+Version: 1.8.16
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -467,6 +467,10 @@ h3 {
 	max-height: 470px;
 	object-fit: cover;
 	display: block;
+}
+
+.about-section .section-photo img {
+	object-position: center top;
 }
 
 .quote-section {
@@ -1381,6 +1385,11 @@ a.button-outline:hover {
 
 	.about-section .section-photo {
 		order: 2;
+		height: clamp(360px, 100vw, 480px);
+	}
+
+	.about-section .section-photo img {
+		max-height: none;
 	}
 
 	.office-section {
