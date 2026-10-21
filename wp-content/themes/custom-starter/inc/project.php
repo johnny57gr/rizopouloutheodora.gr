@@ -29,9 +29,9 @@ function custom_starter_home_schema() {
 			'about_image' => array( 'Εικόνα', 'image', '' ),
 			'about_link' => array( 'Σύνδεσμος βιογραφικού', 'url', '' ),
 		) ),
-		'quote' => array( 'Προσέγγιση', array(
-			'quote_text' => array( 'Φράση', 'textarea', 'Ζεστασιά, ειλικρίνεια και σεβασμός' ),
-			'quote_note' => array( 'Κείμενο', 'textarea', 'Η θεραπεία πραγματοποιείται σε περιβάλλον απόλυτης αποδοχής, ασφάλειας και εχέμυθειας, λειτουργώντας μαζί ως «συνοδοιπόροι» προς την αλλαγή.' ),
+		'quote' => array( 'Απόφθεγμα', array(
+			'quote_text' => array( 'Φράση', 'textarea', 'Αυτός που «κοιτάει» προς τα έξω, ονειροπολεί. Αυτός που «κοιτάει» προς τα μέσα, αφυπνίζεται.' ),
+			'quote_note' => array( 'Απόδοση', 'text', 'Carl Jung' ),
 		) ),
 		'office' => array( 'Ο χώρος μου', array(
 			'office_title' => array( 'Τίτλος', 'textarea', 'Ο χώρος των συνεδριών στη Βέροια' ),
@@ -56,6 +56,7 @@ function custom_starter_home_schema() {
 }
 /** Use confirmed contact fields so saved mockup details cannot override them. */
 function custom_starter_home_field_name( $name ) {
+	if ( in_array( $name, array( 'quote_text', 'quote_note' ), true ) ) { return 'tr_quote_approved_' . $name; }
 	return ( in_array( $name, array( 'phone', 'email', 'facebook', 'linkedin' ), true ) ? 'tr_contact_confirmed_' : 'tr_' ) . $name;
 }
 function custom_starter_register_home_fields() {
