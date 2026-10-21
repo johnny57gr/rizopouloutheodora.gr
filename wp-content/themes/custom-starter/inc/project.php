@@ -4,11 +4,8 @@ defined( 'ABSPATH' ) || exit;
 function custom_starter_home_schema() {
 	return array(
 		'hero' => array( 'Κεντρική ενότητα', array(
-			'hero_eyebrow' => array( 'Μικρός τίτλος', 'text', 'ΑΣΦΑΛΕΙΑ · ΑΠΟΔΟΧΗ · ΣΕΒΑΣΜΟΣ' ),
-			'hero_title' => array( 'Τίτλος', 'textarea', 'Μαζί, προς μια ζωή με νόημα' ),
-			'hero_text' => array( 'Κείμενο', 'textarea', 'Σε ένα ασφαλές περιβάλλον αποδοχής, κατανοούμε τις δυσκολίες σας και αναζητούμε νέους τρόπους διαχείρισης των σκέψεων και των συναισθημάτων σας.' ),
+			'hero_title' => array( 'Τίτλος', 'textarea', 'Καλώς ήρθατε στην ιστοσελίδα μου' ),
 			'hero_image' => array( 'Εικόνα', 'image', '' ),
-			'hero_button' => array( 'Κουμπί', 'text', 'Επικοινωνήστε μαζί μου' ),
 		) ),
 		'services' => array( 'Υπηρεσίες', array(
 			'services_title' => array( 'Τίτλος', 'text', 'Υποστήριξη με επίκεντρο τις ανάγκες σας' ),

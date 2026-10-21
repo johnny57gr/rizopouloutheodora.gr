@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.14
+Version: 1.8.15
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -355,35 +355,19 @@ h3 {
 }
 
 .home-hero {
+	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	min-height: 610px;
-	max-width: 1600px;
-	margin: auto;
+	place-items: center;
+	min-height: clamp(480px, 48vw, 680px);
+	isolation: isolate;
+	background: #665b50;
 }
 
-.hero-copy {
-	padding: 4.5rem 3.5rem 3.5rem max(1.5rem,calc((100vw - 75rem)/2));
-	align-self: center;
-}
-
-.hero-copy .copy {
-	max-width: 29rem;
-}
-
-.hero-note {
-	font-size: .7rem;
-	letter-spacing: .15em;
-	margin: 1.8rem 0 0;
-}
-
-.hero-photo img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	max-height: 760px;
-	display: block;
-}
+.hero-photo { position: absolute; inset: 0; z-index: -2; }
+.hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.home-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgb(35 29 24 / 52%); }
+.hero-copy { width: min(100%, 64rem); padding: 4rem 1.5rem; text-align: center; }
+.hero-copy h1 { margin: 0; color: #fff; font-size: clamp(2.4rem, 5vw, 4.75rem); line-height: 1.15; text-wrap: balance; text-shadow: 0 2px 12px rgb(0 0 0 / 20%); }
 
 .services-section {
 	padding-block: 3.5rem 4rem;
@@ -1238,9 +1222,6 @@ a.button-outline:hover {
 .individual-closing { max-width: 65rem; margin: 0 auto 1.5rem; font: italic 400 clamp(1.3rem, 2vw, 1.8rem)/1.5 Georgia, serif; text-align: center; }
 
 @media (min-width: 1600px) {
-	.hero-copy {
-		padding-left: 5rem;
-	}
 
 	.office-section .section-copy {
 		padding-left: 5rem;
@@ -1311,13 +1292,7 @@ a.button-outline:hover {
 }
 
 @media (max-width: 1100px) {
-	.hero-copy {
-		padding: 3rem 1.5rem;
-	}
 
-	.home-hero {
-		min-height: 540px;
-	}
 
 	.services-grid {
 		gap: 1.5rem;
@@ -1333,6 +1308,8 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.home-hero { min-height: 460px; }
+	.hero-copy { padding: 3rem 1.25rem; }
 	.individual-approach-grid { grid-template-columns: 1fr; }
 	.biography-intro, .biography-approach-grid, .biography-detail-row { grid-template-columns: 1fr; gap: 1.5rem; }
 	.biography-detail-row > div { padding-left: 0; border-left: 0; }
@@ -1368,25 +1345,10 @@ a.button-outline:hover {
 		font-size: 1.15rem;
 	}
 
-	.home-hero {
-		grid-template-columns: 1fr;
-	}
 
-	.hero-copy {
-		padding: 2.5rem 1.25rem;
-	}
 
-	.hero-photo {
-		height: 370px;
-	}
 
-	.hero-photo img {
-		object-position: center 60%;
-	}
 
-	.hero-note {
-		font-size: .6rem;
-	}
 
 	.services-grid {
 		grid-template-columns: 1fr 1fr;
