@@ -22,10 +22,8 @@
 			<nav id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'custom-starter' ); ?>">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu', 'fallback_cb' => 'custom_starter_project_menu' ) ); ?>
 			</nav>
-		<?php
-		$contact_url = custom_starter_contact_page_url();
-		$contact_url = $contact_url ? $contact_url : home_url( '/#contact' );
-		?>
-		<a class="button header-phone" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Κλείστε ραντεβού', 'custom-starter' ); ?></a>
+		<?php if ( custom_starter_phone_url() ) : ?>
+			<a class="button header-phone" href="<?php echo esc_url( custom_starter_phone_url() ); ?>"><?php esc_html_e( 'Κλείστε ραντεβού', 'custom-starter' ); ?></a>
+		<?php endif; ?>
 	</div>
 </header>
