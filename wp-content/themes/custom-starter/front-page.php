@@ -12,7 +12,8 @@ get_header();
 	if ( is_page() && post_password_required() ) {
 		echo get_the_password_form();
 	} else {
-		foreach ( array( 'hero', 'services', 'about', 'quote', 'office', 'journal', 'contact' ) as $section ) {
+		// The journal section is temporarily paused at the client's request.
+		foreach ( array( 'hero', 'services', 'about', 'quote', 'office', 'contact' ) as $section ) {
 			get_template_part( 'template-parts/home/' . $section );
 		}
 	}
