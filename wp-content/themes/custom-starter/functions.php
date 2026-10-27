@@ -18,3 +18,5 @@ require_once get_template_directory() . '/inc/services.php';
 require_once get_template_directory() . '/inc/faq.php';
 require_once get_template_directory() . '/inc/private-preview.php';
 require_once get_template_directory() . '/inc/biography.php';
+
+require_once get_template_directory() . '/inc/office-gallery.php';

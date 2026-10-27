@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.8.17
+Version: 1.9.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1240,6 +1240,27 @@ a.button-outline:hover {
 .individual-topics-intro { margin: 1rem 0 0; }
 .individual-closing { max-width: 65rem; margin: 0 auto 1.5rem; font: italic 400 clamp(1.3rem, 2vw, 1.8rem)/1.5 Georgia, serif; text-align: center; }
 
+/* Office photographs: no dependency on ACF Pro or a lightbox library. */
+.office-gallery { padding-block: 1.5rem 2.5rem; }
+.office-gallery[hidden] { display: none; }
+.office-gallery summary { cursor: pointer; color: var(--accent); padding-block: .75rem; }
+.office-gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 1rem 0 0; }
+.office-gallery-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.office-gallery-open { overflow: hidden; }
+.office-lightbox { width: min(960px, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto; padding: 1.25rem; border: 0; border-radius: 10px; background: #faf7f4; color: var(--ink); box-shadow: 0 20px 80px #0005; }
+.office-lightbox:not([open]) { display: none; }
+.office-lightbox::backdrop { background: rgb(25 22 20 / 80%); }
+.office-lightbox-toolbar, .office-lightbox-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.office-lightbox-toolbar h2 { margin: 0; font-size: 1.4rem; }
+.office-lightbox-figure { margin: 1rem 0; text-align: center; }
+.office-lightbox-figure img { display: block; width: 100%; height: min(62vh, 640px); object-fit: contain; }
+.office-lightbox-figure figcaption { margin-top: .75rem; font-size: .9rem; }
+.office-lightbox-control { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--accent); font: inherit; font-size: 1.5rem; cursor: pointer; }
+.office-lightbox-control[hidden] { display: none; }
+.office-lightbox-control:hover { background: #e9dfd7; }
+.office-lightbox-control:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.office-lightbox-status { margin: 0 auto; font-size: .9rem; }
+
 @media (min-width: 1600px) {
 
 	.office-section .section-copy {
@@ -1327,6 +1348,9 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.office-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.office-lightbox { padding: .75rem; }
+	.office-lightbox-figure img { height: 55dvh; }
 	.home-hero { min-height: 460px; }
 	.hero-copy { padding: 3rem 1.25rem; }
 	.individual-approach-grid { grid-template-columns: 1fr; }
