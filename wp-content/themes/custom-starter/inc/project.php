@@ -64,7 +64,7 @@ function custom_starter_register_home_fields() {
 		$fields = array();
 		foreach ( $definition[1] as $name => $spec ) {
 			$field = array( 'key' => 'field_' . custom_starter_home_field_name( $name ), 'name' => custom_starter_home_field_name( $name ), 'label' => $spec[0], 'type' => $spec[1], 'default_value' => $spec[2] );
-			if ( preg_match( '/^service_[1-4]_link$/', $name ) ) { $field['instructions'] = 'Σύνδεσμος της αντίστοιχης αναλυτικής υπηρεσίας. Αν μείνει κενό, η πρώτη υπηρεσία εντοπίζει αυτόματα τη σελίδα Ατομικής Ψυχοθεραπείας· στις υπόλοιπες δεν εμφανίζεται βελάκι μέχρι να οριστεί σύνδεσμος.'; }
+			if ( preg_match( '/^service_[1-4]_link$/', $name ) ) { $field['instructions'] = 'Σύνδεσμος της αντίστοιχης αναλυτικής υπηρεσίας. Αν μείνει κενό, εντοπίζεται αυτόματα η αντίστοιχη δημοσιευμένη σελίδα με ειδικό πρότυπο. Χωρίς διαθέσιμη αναλυτική σελίδα δεν εμφανίζεται κουμπί.'; }
 			if ( 'phone' === $name ) { $field['instructions'] = 'Αριθμός με κωδικό χώρας. Χρησιμοποιείται σε όλα τα κουμπιά κλήσης της ιστοσελίδας.'; }
 			if ( 'contact_page_url' === $name ) { $field['instructions'] = 'Προαιρετική αντικατάσταση. Αν μείνει κενό, εντοπίζεται αυτόματα η δημοσιευμένη σελίδα με πρότυπο Επικοινωνία.'; }
 			if ( 'viber' === $name ) { $field['instructions'] = 'Πλήρης αριθμός με κωδικό χώρας, π.χ. +30. Αφήστε κενό για να χρησιμοποιείται το τηλέφωνο επικοινωνίας.'; }

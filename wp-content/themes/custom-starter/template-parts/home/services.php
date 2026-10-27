@@ -6,9 +6,7 @@
 <h3><?php custom_starter_home_text( 'service_' . $i . '_title' ); ?></h3>
 <?php
 $url = custom_starter_home_value( 'service_' . $i . '_link' );
-if ( ! $url && 1 === $i ) {
-	$url = custom_starter_service_template_url( 'page-templates/individual-sessions.php' );
-}
+if ( ! $url ) { $url = custom_starter_service_detail_url( $i ); }
 if ( $url && '#' !== $url ) : ?>
 <a class="button service-button" href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( 'Διάβασε περισσότερα', 'custom-starter' ); ?><span class="screen-reader-text"> — <?php custom_starter_home_text( 'service_' . $i . '_title' ); ?></span></a>
 <?php endif; ?></article>

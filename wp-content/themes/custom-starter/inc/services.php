@@ -140,3 +140,9 @@ function custom_starter_services_page_url() {
 	return $url ? $url : home_url( '/#services' );
 }
 
+
+/** Discover existing service detail templates without inventing unpublished URLs. */
+function custom_starter_service_detail_url( $number ) {
+	$templates = array( 1 => 'page-templates/individual-sessions.php', 3 => 'page-templates/teen-therapy.php' );
+	return isset( $templates[ $number ] ) ? custom_starter_service_template_url( $templates[ $number ] ) : '';
+}

@@ -4,9 +4,7 @@ $number = (int) $args['number'];
 $prefix = 'service_' . $number;
 $title = custom_starter_services_value( $prefix . '_title' );
 $url = custom_starter_services_value( $prefix . '_url' );
-if ( ! $url && 1 === $number ) {
-	$url = custom_starter_service_template_url( 'page-templates/individual-sessions.php' );
-}
+if ( ! $url ) { $url = custom_starter_service_detail_url( $number ); }
 $label = $url ? custom_starter_services_value( $prefix . '_button' ) : __( 'Επικοινωνία για την υπηρεσία', 'custom-starter' );
 $url = $url ? $url : $args['contact_url'];
 $image_id = absint( custom_starter_services_value( $prefix . '_image' ) );
