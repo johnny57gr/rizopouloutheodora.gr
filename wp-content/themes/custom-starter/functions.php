@@ -21,3 +21,4 @@ require_once get_template_directory() . '/inc/biography.php';
 
 require_once get_template_directory() . '/inc/office-gallery.php';
 require_once get_template_directory() . '/inc/teen-therapy.php';
+require_once get_template_directory() . '/inc/couples-therapy.php';

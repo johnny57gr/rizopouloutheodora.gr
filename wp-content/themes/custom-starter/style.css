@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.10.0
+Version: 1.11.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1272,6 +1272,41 @@ a.button-outline:hover {
 .teens-closing-text { max-width: 54rem; margin: 0 auto 2rem; font: 1.6rem/1.5 Georgia, serif; text-wrap: balance; }
 .teens-back { display: inline-block; margin-top: 1.5rem; }
 
+/* Couples therapy: an open hero, three-part process and editorial goal rows. */
+.couples-hero-band { padding: 1.25rem 0 3.5rem; background: #f6f2ee; }
+.couples-hero-band .breadcrumbs { flex-wrap: wrap; }
+.couples-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; margin-top: 2rem; }
+.couples-hero h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); text-wrap: balance; }
+.couples-page p { line-height: 1.8; }
+.couples-page h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); text-wrap: balance; }
+.couples-photo { margin: 0; }
+.couples-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px 80px 8px 8px; }
+.couples-photo figcaption { margin-top: .5rem; font-size: .75rem; color: var(--muted); }
+.couples-process { padding-block: 3.5rem; }
+.couples-process > h2 { margin-bottom: 2rem; }
+.couples-process-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-left: 1.5rem; margin: 0; }
+.couples-process-list li { padding-left: .4rem; }
+.couples-process-list li::marker { font-family: Georgia, serif; font-size: 1.4rem; color: var(--accent); }
+.couples-process-list p { margin: 0; padding-top: .25rem; }
+.couples-approach { padding-block: 3.5rem; background: #eee7df; }
+.couples-editorial-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 5rem); }
+.couples-approach .couples-editorial-grid > div { border-left: 2px solid #bca48f; padding-left: 2rem; }
+.couples-approach p:last-child { margin-bottom: 0; }
+.couples-goals { padding-block: 3.5rem; }
+.couples-goals > h2 { margin-bottom: 2rem; }
+.couples-goal { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: 2rem; padding: 1.5rem 1.75rem; border-top: 1px solid var(--line); }
+.couples-goal:nth-child(odd) { background: #faf7f4; }
+.couples-goal:last-child { border-bottom: 1px solid var(--line); }
+.couples-goal h3 { margin: 0; font-size: 1.25rem; color: var(--accent); }
+.couples-goal p { margin: 0; }
+.couples-topics { background: #f6f2ee; padding-block: 3.5rem; }
+.couples-topics ul { margin: 0; padding-left: 1.25rem; list-style: disc; }
+.couples-topics li { padding: .6rem 0 .6rem .25rem; line-height: 1.75; }
+.couples-topics li::marker { color: var(--accent); }
+.couples-closing { border-bottom: 1px solid var(--line); }
+.couples-closing .couples-closing-text { max-width: 50rem; margin: 0 auto 2rem; font: 1.7rem/1.5 Georgia, serif; text-wrap: balance; }
+.couples-back { display: inline-block; margin-top: 1.5rem; }
+
 /* Office photographs: no dependency on ACF Pro or a lightbox library. */
 .office-gallery { padding-block: 1.5rem 2.5rem; }
 .office-gallery[hidden] { display: none; }
@@ -1380,6 +1415,13 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.couples-hero, .couples-process-list, .couples-editorial-grid, .couples-goal { grid-template-columns: 1fr; }
+	.couples-hero { gap: 1.5rem; }
+	.couples-hero-band { padding-bottom: 2.5rem; }
+	.couples-process, .couples-approach, .couples-goals, .couples-topics { padding-block: 2.5rem; }
+	.couples-process-list { gap: 1.25rem; }
+	.couples-approach .couples-editorial-grid > div { padding-left: 1.25rem; }
+	.couples-goal { gap: .75rem; padding: 1.25rem; }
 	.teens-intro, .teens-parents-grid, .teens-topics, .teens-benefit-grid { grid-template-columns: 1fr; }
 	.teens-intro, .teens-topics { padding-block: 2.5rem; gap: 1.5rem; }
 	.teens-photo { width: min(100%, 400px); margin-inline: auto; }

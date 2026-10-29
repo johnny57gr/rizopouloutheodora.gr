@@ -143,6 +143,6 @@ function custom_starter_services_page_url() {
 
 /** Discover existing service detail templates without inventing unpublished URLs. */
 function custom_starter_service_detail_url( $number ) {
-	$templates = array( 1 => 'page-templates/individual-sessions.php', 3 => 'page-templates/teen-therapy.php' );
+	$templates = array( 1 => 'page-templates/individual-sessions.php', 2 => 'page-templates/couples-therapy.php', 3 => 'page-templates/teen-therapy.php' );
 	return isset( $templates[ $number ] ) ? custom_starter_service_template_url( $templates[ $number ] ) : '';
 }
