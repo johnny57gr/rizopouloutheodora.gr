@@ -3,7 +3,7 @@ Theme Name: Custom Theme Johnpassthecode
 Author: Yiannis Passas
 Author URI: https://johnpassthecode.com
 Description: A minimal, reusable classic WordPress theme.
-Version: 1.11.0
+Version: 1.12.0
 Requires at least: 6.3
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1307,6 +1307,24 @@ a.button-outline:hover {
 .couples-closing .couples-closing-text { max-width: 50rem; margin: 0 auto 2rem; font: 1.7rem/1.5 Georgia, serif; text-wrap: balance; }
 .couples-back { display: inline-block; margin-top: 1.5rem; }
 
+/* Online therapy: centered text, a panoramic photo and an inset relationship panel. */
+.online-intro-band { padding: 1.25rem 0 3rem; background: #f6f2ee; }
+.online-intro-band .breadcrumbs { flex-wrap: wrap; }
+.online-intro { max-width: 54rem; margin: 2.5rem auto 0; text-align: center; }
+.online-intro h1 { font-size: clamp(2.3rem, 4.5vw, 3.75rem); text-wrap: balance; }
+.online-intro p { margin-bottom: 0; line-height: 1.85; }
+.online-visual { padding-top: 2.5rem; }
+.online-photo { margin: 0; position: relative; }
+.online-photo img { display: block; width: 100%; height: clamp(260px, 31vw, 420px); object-fit: cover; object-position: center; border-radius: 8px; }
+.online-photo figcaption { position: absolute; top: .75rem; right: .75rem; padding: .25rem .5rem; background: #fffffff0; color: var(--muted); font-size: .75rem; }
+.online-relationship { position: relative; width: min(85%, 55rem); margin: -2.5rem auto 0; padding: clamp(1.5rem, 3vw, 2.5rem); background: #eee6de; border: 6px solid #fff; border-radius: 8px; }
+.online-relationship p { margin: 0; font: 1.5rem/1.65 Georgia, serif; text-align: center; }
+.online-reflection { padding-block: 2.5rem 3rem; }
+.online-reflection p { max-width: 48rem; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid #bba18b; line-height: 1.9; }
+.online-closing { background: #f6f2ee; }
+.online-closing .online-closing-text { max-width: 50rem; margin: 0 auto 2rem; font: 1.6rem/1.55 Georgia, serif; text-wrap: balance; }
+.online-back { display: inline-block; margin-top: 1.5rem; }
+
 /* Office photographs: no dependency on ACF Pro or a lightbox library. */
 .office-gallery { padding-block: 1.5rem 2.5rem; }
 .office-gallery[hidden] { display: none; }
@@ -1415,6 +1433,11 @@ a.button-outline:hover {
 }
 
 @media (max-width: 700px) {
+	.online-intro-band { padding-bottom: 2rem; }
+	.online-visual { padding-top: 1.5rem; }
+	.online-relationship { width: calc(100% - 1.5rem); padding: 1.25rem; margin-top: -1.5rem; border-width: 4px; }
+	.online-relationship p { font-size: 1.25rem; }
+	.online-reflection { padding-block: 2rem 2.5rem; }
 	.couples-hero, .couples-process-list, .couples-editorial-grid, .couples-goal { grid-template-columns: 1fr; }
 	.couples-hero { gap: 1.5rem; }
 	.couples-hero-band { padding-bottom: 2.5rem; }
