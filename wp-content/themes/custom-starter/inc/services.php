@@ -146,3 +146,11 @@ function custom_starter_service_detail_url( $number ) {
 	$templates = array( 1 => 'page-templates/individual-sessions.php', 2 => 'page-templates/couples-therapy.php', 3 => 'page-templates/teen-therapy.php', 4 => 'page-templates/online-therapy.php' );
 	return isset( $templates[ $number ] ) ? custom_starter_service_template_url( $templates[ $number ] ) : '';
 }
+
+/** Old homepage placeholders must not override a published service detail page. */
+function custom_starter_service_target_url( $number, $override ) {
+	$override = trim( (string) $override );
+	$home = rtrim( home_url( '/' ), '/' );
+	$placeholders = array( '', '#', '/', '/#', $home, $home . '/', $home . '#', $home . '/#' );
+	return in_array( $override, $placeholders, true ) ? custom_starter_service_detail_url( $number ) : $override;
+}

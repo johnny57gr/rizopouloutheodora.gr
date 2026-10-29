@@ -23,8 +23,7 @@
 			<p class="footer-menu-title">Υπηρεσίες</p>
 			<ul class="footer-service-list">
 				<?php for ( $number = 1; $number <= 4; $number++ ) :
-					$url = custom_starter_home_value( 'service_' . $number . '_link' );
-					if ( ! $url ) { $url = custom_starter_service_detail_url( $number ); }
+					$url = custom_starter_service_target_url( $number, custom_starter_home_value( 'service_' . $number . '_link' ) );
 					if ( ! $url ) {
 						$overview = custom_starter_service_template_url( 'page-templates/services.php' );
 						$url = $overview ? $overview . '#overview-service-' . $number : home_url( '/#services' );

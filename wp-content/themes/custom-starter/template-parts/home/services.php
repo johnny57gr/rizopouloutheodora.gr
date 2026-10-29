@@ -5,8 +5,7 @@
 <article class="service"><div class="service-icon" aria-hidden="true"><?php get_template_part( 'template-parts/components/service-icon', null, array( 'number' => $i ) ); ?></div>
 <h3><?php custom_starter_home_text( 'service_' . $i . '_title' ); ?></h3>
 <?php
-$url = custom_starter_home_value( 'service_' . $i . '_link' );
-if ( ! $url ) { $url = custom_starter_service_detail_url( $i ); }
+$url = custom_starter_service_target_url( $i, custom_starter_home_value( 'service_' . $i . '_link' ) );
 if ( $url && '#' !== $url ) : ?>
 <a class="button service-button" href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( 'Διάβασε περισσότερα', 'custom-starter' ); ?><span class="screen-reader-text"> — <?php custom_starter_home_text( 'service_' . $i . '_title' ); ?></span></a>
 <?php endif; ?></article>

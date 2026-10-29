@@ -21,7 +21,7 @@ foreach ( $groups[0]['fields'] as $field ) {
 	$keys[ $field['key'] ] = true;
 	verify_contact( in_array( $field['type'], array( 'message', 'text', 'textarea', 'number', 'url' ), true ), 'Non-free field type.' );
 }
-verify_contact( 'Ας μιλήσουμε' === custom_starter_contact_value( 'title' ), 'Missing default.' );
+verify_contact( 'Επικοινωνία' === custom_starter_contact_value( 'title' ), 'Missing default.' );
 $saved['tr_contact_page_title'] = '';
 verify_contact( '' === custom_starter_contact_value( 'title' ), 'Saved empty value was overwritten.' );
 foreach ( array( 'https://www.google.com/maps/embed?pb=example', 'https://www.google.com/maps/embed/v1/place?q=Veria' ) as $url ) {

@@ -4,6 +4,7 @@ define( 'ABSPATH', __DIR__ );
 $saved = array();
 $groups = array();
 function add_action( $hook, $callback ) {}
+function add_filter( $hook, $callback, $priority, $args ) {}
 function get_option( $name ) { return 12; }
 function post_password_required( $id ) { return false; }
 function metadata_exists( $type, $id, $name ) { return array_key_exists( $name, $GLOBALS['saved'] ); }
@@ -28,11 +29,13 @@ $saved['tr_hero_title'] = '';
 check( '' === custom_starter_home_value( 'hero_title' ), 'An intentionally empty field must stay empty.' );
 $saved['tr_hero_title'] = 'Saved title';
 check( 'Saved title' === custom_starter_home_value( 'hero_title' ), 'Saved data must override fallback.' );
-check( 'tel:+306970000000' === custom_starter_phone_url(), 'Requested design phone fallback.' );
+check( 'tel:+306984565423' === custom_starter_phone_url(), 'Confirmed mobile default.' );
 $saved['tr_phone'] = '';
-check( 'tel:+306970000000' === custom_starter_phone_url(), 'Previously saved empty phones use the design fallback.' );
-$saved['tr_phone'] = '+30 23310 12345';
+check( 'tel:+306984565423' === custom_starter_phone_url(), 'Legacy saved draft does not override the confirmed phone.' );
+$saved['tr_contact_confirmed_phone'] = '';
+check( '' === custom_starter_phone_url(), 'Preserve intentionally cleared confirmed phone.' );
+$saved['tr_contact_confirmed_phone'] = '+30 23310 12345';
 check( 'tel:+302331012345' === custom_starter_phone_url(), 'Normalize phone formatting.' );
-$saved['tr_phone'] = 'not a phone';
+$saved['tr_contact_confirmed_phone'] = 'not a phone';
 check( '' === custom_starter_phone_url(), 'Reject invalid phone.' );
 echo 'PASS: ' . count( $keys ) . " unique ACF Free fields, saved values and phone links.\n";
